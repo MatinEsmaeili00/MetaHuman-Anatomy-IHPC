@@ -2,6 +2,11 @@
 
 All tests run in `Claude/MetaHumanTestCOPY2` with the merged C++ (build *Succeeded*) through the editor bridge.
 
+> **2026-11-08 (COPY2B):** the layer buttons now go to skin amounts 1 / 0.5 / 0 (depths 0 / 0.5 / 1), a bug that froze
+> the button animation after one frame is fixed, and the highlight glow is fixed for muscles and bones. The tests of
+> that session (real clicks on the UI, Actions menu, Madi) are in [docs/06 §7](06-actions-characters-highlight.md#7-tests-play-in-editor-2026-11-08).
+> The table below is the original (2026-11-07) state.
+
 ## Layer switcher → anatomy layers
 
 `tools/ue/pie.sh layer:<body|muscles|skeleton>` calls `WBP_IHPC_LayerSwitcher.SelectLayer` (= clicking the button):

@@ -2,7 +2,7 @@
 # Screenshot of the running PIE viewport INCLUDING the game UI (console command "Shot showui"), through the
 # file bridge (works even when the MCP server is busy):  tools/ue/pie_shot.sh out.png [max_px]
 OUT="${1:?output png}"; MAXPX="${2:-1280}"
-PROJECT_DIR="${UE_PROJECT:-/Users/mesmae6/Perforce/maclab_digitalhuman_main/Claude/MetaHumanTestCOPY2}"
+PROJECT_DIR="${UE_PROJECT:-/Users/mesmae6/Perforce/maclab_digitalhuman_main/Claude/MetaHumanTestCOPY2B}"
 SHOTS="$PROJECT_DIR/Saved/Screenshots"
 before=$(find "$SHOTS" -name '*.png' 2>/dev/null | wc -l)
 python3 -I "$(dirname "$0")/ue_bridge.py" -c "

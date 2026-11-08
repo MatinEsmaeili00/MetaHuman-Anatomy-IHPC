@@ -52,7 +52,23 @@ Target project: `Claude/MetaHumanTestCOPY2` (IHPC UI). Source of the functionali
 - [x] [docs/00-system-overview.md](docs/00-system-overview.md): full system and structure
 - [x] Mirror changed files into `project/`, push
 
-## 6. Next steps (not done yet)
+## 6. Actions menu, new characters, layer amounts, highlight (2026-11-08, COPY2B) → [docs/06](docs/06-actions-characters-highlight.md)
+- [x] MCP (`unreal-copy2`, port 8001) + GitHub access checked; editor bridge restarted in COPY2B
+- [x] Team's manual C++ changes reviewed, kept and compiled (they had never been built in COPY2B)
+- [x] Actions menu: `Action_<Name>` buttons → `UAnimationTimelineComp::PlayAction` / `StopAction`; green = playing; greyed out without clips
+- [x] Madison clips retargeted to `metahuman_base_skel` (`AS_*_MH`, job 15); per-pawn `ActionClips` (job 17)
+- [x] Madi: `MHC_Madi` assembled (job 19), `BP_Madi_Pawn` (job 16), in the pawn switcher, walk + muscles + bones + actions verified
+- [!] Grant: `MHC_Grant` has no texture sources → needs the MetaHuman cloud login, then `tools/ue/add_metahuman_pawn.sh Grant /Game/MadisonTesting/GrantMHCharacter/MHC_Grant`
+- [x] Layer buttons = skin amounts 1 / 0.5 / 0; `Skin.FadeLength` = 1 so 0.5 = muscles fully shown
+- [x] Fix: layer buttons froze after one frame (slider `SetValue` echo in `UCPP_UW_AnatomyViewSwitcher`)
+- [x] Fix: both pickers shared one highlight mesh (name clash) → muscles never glowed
+- [x] Fix: part IDs in the vertex colours were sRGB-converted at build → glow on the wrong part; rewritten in place (job 18), job 08 updated
+- [x] PIE tests with real clicks; screenshots; docs; mirror + push
+
+## 7. Next steps (not done yet)
+- [ ] Grant (login, then one command — see above)
+- [ ] Inner-thigh muscle stretches in deep wide stances (weights transferred from Abby's body)
+- [ ] Optional: in-place / camera-facing versions of the action clips; Madi-specific retargeted walk
 - [ ] Trunk muscles: the level's set has no abdominals / obliques / lats / erector spinae / serratus / intercostals / neck / face muscles
 - [ ] Triangle-accurate picking (CPU-skinned mesh ray test) instead of sample points
 - [ ] Hide or move the source `Muscles` actors, the generic `SKELeton` and the extra placed Abby in `Main`

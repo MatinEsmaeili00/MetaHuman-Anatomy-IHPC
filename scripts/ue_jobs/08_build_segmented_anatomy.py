@@ -5,7 +5,7 @@
 #   STEP = "skeleton" : the fitted Skelly_Base skeleton (scripts/blender_jobs/01_export_fitted_skeleton.py), imported
 #                       from FBX, every bone piece bound 100 % to one MetaHuman bone (rigid).
 #
-# For both: one part ID per muscle / bone in the vertex colour (R = (id + 0.5) / 255, the convention the
+# For both: one part ID per muscle / bone in the vertex colour (GPU byte R = id; written sRGB-pre-encoded, see job 18; the convention the
 # anatomy picker and highlight material already use), a single material section, the skeleton = a plugin copy of
 # Abby's body skeleton (MetaHuman bone names -> Leader Pose), and picking samples (points on each part, stored
 # relative to a bone in the reference pose) written to Saved/ClaudeBridge/segmented_<step>.json for the atlas job.
@@ -98,6 +98,14 @@ def region_for(bone):
     return "Body"
 
 
+def _lin_to_srgb(x):
+    return 12.92 * x if x <= 0.0031308 else 1.055 * x ** (1 / 2.4) - 0.055
+
+
+def _srgb_to_lin(x):
+    return x / 12.92 if x <= 0.04045 else ((x + 0.055) / 1.055) ** 2.4
+
+
 def finish(dm, part_of_vertex, parts, asset_name, material_path, rigid_bone_of_part=None, samples_per_part=24):
     """Weights, IDs in vertex colours, one material, skeletal mesh asset, picking samples."""
     _, vids, _ = Q.get_all_vertex_i_ds(dm) if hasattr(Q, "get_all_vertex_i_ds") else (None, None, None)
@@ -129,8 +137,10 @@ def finish(dm, part_of_vertex, parts, asset_name, material_path, rigid_bone_of_p
             BW.set_vertex_bone_weights(dm, vid, [w])
         log("rigid weights set on", nverts, "vertices")
 
-    # part IDs -> vertex colour red channel
-    colors = [unreal.LinearColor(((part_of_vertex[v] + 0.5) / 255.0) if part_of_vertex[v] else 0.0, 0.0, 0.0, 1.0)
+    # part IDs -> vertex colour red channel. Geometry Script vertex colours are treated as sRGB when the skeletal mesh
+    # is written (converted to linear before the 8-bit render data), so pre-encode: the GPU then sees byte = ID exactly
+    # (see job 18, which fixed the meshes built with the old "(id + 0.5) / 255" value).
+    colors = [unreal.LinearColor(_lin_to_srgb((part_of_vertex[v] + 0.25) / 255.0) if part_of_vertex[v] else 0.0, 0.0, 0.0, 1.0)
               for v in range(nverts)]
     VC.set_mesh_per_vertex_colors(dm, L.convert_array_to_color_list(colors))
     MAT.clear_material_i_ds(dm, 0) if hasattr(MAT, "clear_material_i_ds") else None
@@ -267,7 +277,7 @@ if STEP.startswith("samples_"):
     _, plist, _ = Q.get_all_vertex_positions(dm, False)
     positions = [(v.x, v.y, v.z) for v in L.convert_vector_list_to_array(plist)]
     cl = [x for x in VC.get_mesh_per_vertex_colors(dm) if type(x).__name__ == "GeometryScriptColorList"][0]
-    ids = [int(c.r * 255.0 + 1e-3) for c in L.convert_color_list_to_array(cl)]
+    ids = [int(_srgb_to_lin(c.r) * 255.0 + 1e-3) for c in L.convert_color_list_to_array(cl)]   # job-18 encoding
     rigid = {p["id"]: p["bone"] for p in parts} if layer == "skeleton" else None
     per_part = 64 if layer == "muscles" else 40
     verts_of_part = {}

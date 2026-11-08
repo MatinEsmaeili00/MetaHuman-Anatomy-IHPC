@@ -27,8 +27,9 @@ class METAHUMANTEST_API UCPP_LocomotionAnimInstance : public UAnimInstance, publ
 
 public:
 	// ---------------- Setup (set in the Anim BP's class defaults) ----------------
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Locomotion")
+	
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Locomotion")
 	TObjectPtr<UAnimSequenceBase> WalkAnim = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Locomotion")
@@ -109,6 +110,13 @@ public:
 	UPROPERTY(Transient, BlueprintReadOnly, Category="Locomotion|Output")
 	FRotator HeadCorrection = FRotator::ZeroRotator;
 
+	/** Swap the walk clip's timing data (gait-cycle markers / length) at runtime.
+	 *  NOTE: the AnimGraph's Sequence Evaluator nodes reference their clips directly, so this changes the walk's
+	 *  TIMING but not the pose that is shown. To play a different clip (Running, Tennis Forehand, Soccer Warmup ...)
+	 *  use UAnimationTimelineComp::PlayAction on the pawn instead (that's what the IHPC Actions menu does). */
+	UFUNCTION(BlueprintCallable, Category="Locomotion")
+	void SetWalkAnimation(UAnimSequenceBase* NewAnimation);
+
 	// IAnimationTimelineSource
 	virtual float GetTimelineCycleLength() const override { return CycleLength; }
 	virtual void SetTimelinePosition(float NormalizedPosition) override;
@@ -131,6 +139,7 @@ private:
 	};
 
 	void MovePhase(float NewPhase);
+
 	void UpdateOutputs();
 
 	FGaitCycles Walk;
@@ -138,3 +147,5 @@ private:
 	FGaitCycles Run;
 	uint64 LastExternalFrame = 0;
 };
+
+

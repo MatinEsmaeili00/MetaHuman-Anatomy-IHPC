@@ -1,5 +1,7 @@
 // Animation timeline: play / pause / reverse / scrub the pawn's animation. Lives on the pawn;
-// the timeline widget (UWCPP_AnimationTimeline) only forwards button clicks and slider drags to it.
+// the timeline widgets (IHPC timeline bar, old UWCPP_AnimationTimeline) only forward button clicks and slider drags to it.
+// It also plays named ACTION clips (PlayAction / StopAction) instead of the walk / jog / run locomotion - the IHPC HUD's
+// "Actions" menu buttons (Action_Running, Action_TennisForehand, Action_SoccerWarmup) call them.
 
 #pragma once
 
@@ -32,6 +34,9 @@ enum class ETimelinePlayState : uint8
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTimelinePlayStateChanged, ETimelinePlayState, NewState);
+
+/** Fired when an action clip starts (ActionName) or the pawn goes back to its walk / jog / run locomotion (None). */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTimelineActionChanged, FName, ActionName);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class METAHUMANTEST_API UAnimationTimelineComp : public UActorComponent
@@ -70,6 +75,47 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category="Animation Timeline")
 	FOnTimelinePlayStateChanged OnPlayStateChanged;
+
+	// ---------------- Actions (the IHPC "Actions" menu: Running, Tennis Forehand, Soccer Warmup ...) ----------------
+
+	/**
+	 * Clips the pawn can play INSTEAD of its walk / jog / run locomotion, by action name.
+	 * The IHPC HUD's buttons named "Action_<Name>" call PlayAction(<Name>) on the possessed pawn, so the keys here
+	 * must match the button names without the "Action_" prefix: Running, TennisForehand, SoccerWarmup.
+	 * Per pawn, so every character uses clips made for its own skeleton:
+	 *   Abby8 (Abby's skeleton)            -> /Game/MadisonAnimations/AS_*
+	 *   Beau / Madi (metahuman_base_skel)  -> /Game/MadisonAnimations/MetaHuman/AS_*_MH (retargeted with RTG_MH_IKRig)
+	 * While an action plays the Body mesh runs the clip in single-node mode; the play / pause / scrub / speed controls
+	 * drive the clip, and every Leader Pose follower (face, clothes, muscles, skeleton) follows it.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Animation Timeline|Actions")
+	TMap<FName, TObjectPtr<UAnimSequenceBase>> ActionClips;
+
+	/** Loop action clips (true) or stop on their last frame (false). The locomotion always loops (bLoop). */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Animation Timeline|Actions")
+	bool bLoopActions = true;
+
+	UPROPERTY(BlueprintAssignable, Category="Animation Timeline|Actions")
+	FOnTimelineActionChanged OnActionChanged;
+
+	/** Play ActionClips[ActionName] from the start (replaces the walk / jog / run Anim BP until StopAction).
+	 *  Returns false if the pawn has no clip for that action or the clip doesn't fit the mesh's skeleton. */
+	UFUNCTION(BlueprintCallable, Category="Animation Timeline|Actions")
+	bool PlayAction(FName ActionName);
+
+	/** Back to the walk / jog / run locomotion (the mesh's Anim BP). */
+	UFUNCTION(BlueprintCallable, Category="Animation Timeline|Actions")
+	void StopAction();
+
+	/** The action being played, or None while the pawn walks / jogs / runs. */
+	UFUNCTION(BlueprintPure, Category="Animation Timeline|Actions")
+	FName GetCurrentAction() const { return CurrentAction; }
+
+	UFUNCTION(BlueprintPure, Category="Animation Timeline|Actions")
+	bool IsPlayingAction() const { return !CurrentAction.IsNone(); }
+
+	UFUNCTION(BlueprintPure, Category="Animation Timeline|Actions")
+	bool HasAction(FName ActionName) const { return ActionClips.FindRef(ActionName) != nullptr; }
 
 	// ---------------- Controls for UI ----------------
 
@@ -136,9 +182,16 @@ private:
 	void SetPlayState(ETimelinePlayState NewState);
 	void PushTime();
 	float WrapOrClamp(float Time) const;
+	bool ShouldLoop() const { return CurrentAction.IsNone() ? bLoop : bLoopActions; }
 
 	UPROPERTY(Transient)
 	TObjectPtr<USkeletalMeshComponent> DrivenMesh = nullptr;
+
+	/** Clip of the action being played (null = locomotion). */
+	UPROPERTY(Transient)
+	TObjectPtr<UAnimSequenceBase> ActionClip = nullptr;
+
+	FName CurrentAction;
 
 	TWeakObjectPtr<UAnimInstance> SourceInstance;
 	TWeakObjectPtr<UAnimSingleNodeInstance> SingleNodeInstance;

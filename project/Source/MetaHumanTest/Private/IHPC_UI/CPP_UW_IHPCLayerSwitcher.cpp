@@ -66,12 +66,10 @@ void UCPP_UW_IHPCLayerSwitcher::SelectLayer(EIHPCAnatomyLayer Layer)
 	SelectedLayer = Layer;
 	RefreshVisuals();
 
-	float RevealDepth = -1.f;
-	const int32 LayerIndex = GetAnatomyLayerIndex(Layer);
-	if (LayerIndex != INDEX_NONE)
+	const float RevealDepth = GetRevealDepthForLayer(Layer);
+	if (RevealDepth >= 0.f)
 	{
-		AnatomyComp->ShowLayer(LayerIndex); // animates at the component's TransitionSpeed
-		RevealDepth = AnatomyComp->GetLayerDepth(LayerIndex);
+		AnatomyComp->SetRevealDepth(RevealDepth, /*bAnimate*/ true); // animates at the component's TransitionSpeed
 		SyncedAnatomyComp = AnatomyComp;
 	}
 	else if (!bWarnedMissingLayers)
@@ -119,6 +117,28 @@ int32 UCPP_UW_IHPCLayerSwitcher::GetAnatomyLayerIndex(EIHPCAnatomyLayer Layer) c
 	}
 }
 
+float UCPP_UW_IHPCLayerSwitcher::GetRevealDepthForLayer(EIHPCAnatomyLayer Layer) const
+{
+	if (!CanDriveAvatarLayers())
+	{
+		return -1.f;
+	}
+	if (bUseSkinAmounts)
+	{
+		// Skin amount 1 = all skin (depth 0), 0.5 = muscles (depth 0.5), 0 = bones (depth 1).
+		float Amount = BodySkinAmount;
+		switch (Layer)
+		{
+		case EIHPCAnatomyLayer::Muscles:  Amount = MusclesSkinAmount; break;
+		case EIHPCAnatomyLayer::Skeleton: Amount = SkeletonSkinAmount; break;
+		case EIHPCAnatomyLayer::Body:
+		default:                          break;
+		}
+		return 1.f - FMath::Clamp(Amount, 0.f, 1.f);
+	}
+	return AnatomyComp->GetLayerDepth(GetAnatomyLayerIndex(Layer));
+}
+
 bool UCPP_UW_IHPCLayerSwitcher::CanDriveAvatarLayers() const
 {
 	return IsValid(AnatomyComp) && AnatomyComp->GetNumLayers() > 0;
@@ -138,7 +158,7 @@ void UCPP_UW_IHPCLayerSwitcher::SyncSelectionFromPawn()
 	float BestDistance = TNumericLimits<float>::Max();
 	for (const EIHPCAnatomyLayer Layer : { EIHPCAnatomyLayer::Body, EIHPCAnatomyLayer::Muscles, EIHPCAnatomyLayer::Skeleton })
 	{
-		const float Distance = FMath::Abs(AnatomyComp->GetLayerDepth(GetAnatomyLayerIndex(Layer)) - Depth);
+		const float Distance = FMath::Abs(GetRevealDepthForLayer(Layer) - Depth);
 		if (Distance < BestDistance)
 		{
 			BestDistance = Distance;

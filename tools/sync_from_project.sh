@@ -2,7 +2,7 @@
 # Mirror the merged project's text files + tracked .uasset files into project/ (run from anywhere).
 set -e
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
-PROJ="${PROJ:-/Users/mesmae6/Perforce/maclab_digitalhuman_main/Claude/MetaHumanTestCOPY2}"
+PROJ="${PROJ:-/Users/mesmae6/Perforce/maclab_digitalhuman_main/Claude/MetaHumanTestCOPY2B}"
 DST="$REPO/project"
 mkdir -p "$DST"
 cp "$PROJ/MetaHumanTest.uproject" "$DST/"

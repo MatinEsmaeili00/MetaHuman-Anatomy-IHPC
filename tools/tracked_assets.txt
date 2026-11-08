@@ -21,3 +21,9 @@ Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/SKM_Anatomy_Muscles_Seg
 Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/SKM_Anatomy_Skeleton_Segmented.uasset
 Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/DA_Atlas_Muscles_Segmented.uasset
 Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/DA_Atlas_Skeleton_Segmented.uasset
+# 2026-11-08: Actions menu, Madi, layer amounts, highlight fixes
+Content/UserInterface/IHPC/Widgets/WBP_IHPC_HUD.uasset
+Content/MadisonTesting/MadiMHCharacter/BP_Madi_Pawn.uasset
+Content/MadisonAnimations/MetaHuman/AS_Running_MH.uasset
+Content/MadisonAnimations/MetaHuman/AS_MP_MocapTennisTest_MH.uasset
+Content/MadisonAnimations/MetaHuman/AS_SoccerFeintWarmup_MH.uasset

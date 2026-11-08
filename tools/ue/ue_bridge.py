@@ -11,7 +11,7 @@ import sys
 import time
 import uuid
 
-PROJECT = os.environ.get("UE_PROJECT", "/Users/mesmae6/Perforce/maclab_digitalhuman_main/Claude/MetaHumanTestCOPY2")
+PROJECT = os.environ.get("UE_PROJECT", "/Users/mesmae6/Perforce/maclab_digitalhuman_main/Claude/MetaHumanTestCOPY2B")
 ROOT = os.path.join(PROJECT, "Saved", "ClaudeBridge")
 
 

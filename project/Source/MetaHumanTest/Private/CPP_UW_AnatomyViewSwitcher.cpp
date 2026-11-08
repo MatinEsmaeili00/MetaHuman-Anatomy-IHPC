@@ -81,7 +81,7 @@ void UCPP_UW_AnatomyViewSwitcher::BindToPawn(APawn* Pawn)
 	if (AnatomyComp)
 	{
 		AnatomyComp->OnRevealDepthChanged.AddUniqueDynamic(this, &UCPP_UW_AnatomyViewSwitcher::HandleRevealDepthChanged);
-		AnatomyViewSwitcher_Slider->SetValue(DepthToSlider(AnatomyComp->GetRevealDepth()));
+		SetSliderSilently(DepthToSlider(AnatomyComp->GetRevealDepth()));
 	}
 }
 
@@ -97,10 +97,19 @@ float UCPP_UW_AnatomyViewSwitcher::DepthToSlider(float Depth) const
 
 void UCPP_UW_AnatomyViewSwitcher::OnSliderValueChanged(float Value)
 {
-	if (AnatomyComp)
+	// Ignore the echo of our own SetValue (HandleRevealDepthChanged / BindToPawn): USlider::SetValue fires
+	// OnValueChanged, and forwarding that back as SetRevealDepth(..., bAnimate=false) froze every animated
+	// ShowLayer / SetRevealDepth after its first frame (the layer buttons stopped at depth ~0.04).
+	if (AnatomyComp && !bSyncingSlider)
 	{
 		AnatomyComp->SetRevealDepth(SliderToDepth(Value), /*bAnimate*/ false);
 	}
+}
+
+void UCPP_UW_AnatomyViewSwitcher::SetSliderSilently(float SliderValue)
+{
+	TGuardValue<bool> Guard(bSyncingSlider, true);
+	AnatomyViewSwitcher_Slider->SetValue(SliderValue);
 }
 
 void UCPP_UW_AnatomyViewSwitcher::OnSliderCaptureBegin()
@@ -142,6 +151,6 @@ void UCPP_UW_AnatomyViewSwitcher::HandleRevealDepthChanged(float RevealDepth)
 	// Keep the slider in sync while a button animates the depth (but don't fight the user's drag).
 	if (!bDragging)
 	{
-		AnatomyViewSwitcher_Slider->SetValue(DepthToSlider(RevealDepth));
+		SetSliderSilently(DepthToSlider(RevealDepth));
 	}
 }

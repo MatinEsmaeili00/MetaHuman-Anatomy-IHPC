@@ -36,7 +36,7 @@ UAnatomyViewComp::UAnatomyViewComp()
 	FAnatomyLayerDef& Skin = Layers.Emplace_GetRef(TEXT("Skin"), TArray<FName>{ TEXT("SkinPart") });
 	Skin.GhostMaterial = TSoftObjectPtr<UMaterialInterface>(FSoftObjectPath(TEXT("/MetaHumanAnatomyLayers/Anatomy/Materials/M_Anatomy_XRay.M_Anatomy_XRay")));
 	Skin.GhostBelowOpacity = 1.f; // straight to the x-ray shell as soon as the slider leaves the top: no skin/muscle mix
-	Skin.FadeLength = 0.5f;       // skin -> muscles takes the first third of the slider, muscles -> skeleton the rest
+	Skin.FadeLength = 1.f;        // skin -> muscles and muscles -> skeleton take half the slider each: 0.5 = muscles fully shown
 	FAnatomyLayerDef& Muscles = Layers.Emplace_GetRef(TEXT("Muscles"), TArray<FName>{ TEXT("MuscleMesh"), TEXT("MusclePart") });
 	Muscles.FadeMaterial = TSoftObjectPtr<UMaterialInterface>(FSoftObjectPath(TEXT("/MetaHumanAnatomyLayers/Anatomy/Materials/M_Anatomy_MuscleFade.M_Anatomy_MuscleFade")));
 	Layers.Emplace(TEXT("Skeleton"), TArray<FName>{ TEXT("SkeletonMesh"), TEXT("SkeletonPart") });

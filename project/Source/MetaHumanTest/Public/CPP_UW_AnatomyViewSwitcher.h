@@ -58,7 +58,11 @@ protected:
 	float SliderToDepth(float SliderValue) const;
 	float DepthToSlider(float Depth) const;
 
+	/** Moves the slider to mirror the pawn's depth WITHOUT sending it back to the pawn (SetValue fires OnValueChanged). */
+	void SetSliderSilently(float SliderValue);
+
 private:
 	bool bDragging = false;
+	bool bSyncingSlider = false;
 	float RebindCooldown = 0.f;
 };

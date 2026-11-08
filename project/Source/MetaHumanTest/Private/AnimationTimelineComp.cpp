@@ -66,20 +66,37 @@ void UAnimationTimelineComp::ResolveTarget()
 	// Set the time before the mesh evaluates its pose this frame.
 	DrivenMesh->AddTickPrerequisiteComponent(this);
 
+	// Coming back from an action clip: the mesh is still in single-node mode, put its Anim BP back first
+	// (SetAnimationMode re-creates the anim instance from the mesh's AnimClass).
+	if (!ActionClip && DriveMode != ETimelineDriveMode::SingleClip &&
+		DrivenMesh->GetAnimationMode() == EAnimationMode::AnimationSingleNode && DrivenMesh->GetAnimClass())
+	{
+		DrivenMesh->SetAnimationMode(EAnimationMode::AnimationBlueprint);
+	}
+
 	UAnimInstance* AnimInstance = DrivenMesh->GetAnimInstance();
 	const bool bCanDriveAnimBP = AnimInstance && AnimInstance->Implements<UAnimationTimelineSource>();
 
-	switch (DriveMode)
+	// An action (PlayAction) always plays as a single clip; otherwise DriveMode decides.
+	UAnimSequenceBase* Clip = ActionClip ? ActionClip.Get() : AnimationSequence.Get();
+	if (ActionClip)
 	{
-	case ETimelineDriveMode::Auto:
-		ActiveMode = bCanDriveAnimBP ? EActiveMode::AnimBlueprint : (AnimationSequence ? EActiveMode::SingleClip : EActiveMode::RateOnly);
-		break;
-	case ETimelineDriveMode::AnimBlueprint:
-		ActiveMode = bCanDriveAnimBP ? EActiveMode::AnimBlueprint : EActiveMode::RateOnly;
-		break;
-	case ETimelineDriveMode::SingleClip:
-		ActiveMode = AnimationSequence ? EActiveMode::SingleClip : (bCanDriveAnimBP ? EActiveMode::AnimBlueprint : EActiveMode::RateOnly);
-		break;
+		ActiveMode = EActiveMode::SingleClip;
+	}
+	else
+	{
+		switch (DriveMode)
+		{
+		case ETimelineDriveMode::Auto:
+			ActiveMode = bCanDriveAnimBP ? EActiveMode::AnimBlueprint : (AnimationSequence ? EActiveMode::SingleClip : EActiveMode::RateOnly);
+			break;
+		case ETimelineDriveMode::AnimBlueprint:
+			ActiveMode = bCanDriveAnimBP ? EActiveMode::AnimBlueprint : EActiveMode::RateOnly;
+			break;
+		case ETimelineDriveMode::SingleClip:
+			ActiveMode = AnimationSequence ? EActiveMode::SingleClip : (bCanDriveAnimBP ? EActiveMode::AnimBlueprint : EActiveMode::RateOnly);
+			break;
+		}
 	}
 
 	if (ActiveMode == EActiveMode::AnimBlueprint)
@@ -90,17 +107,80 @@ void UAnimationTimelineComp::ResolveTarget()
 	else if (ActiveMode == EActiveMode::SingleClip)
 	{
 		DrivenMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
-		DrivenMesh->SetAnimation(AnimationSequence);
+		DrivenMesh->SetAnimation(Clip);
 		SingleNodeInstance = DrivenMesh->GetSingleNodeInstance();
 		if (SingleNodeInstance.IsValid())
 		{
 			SingleNodeInstance->SetPlaying(false); // the timeline owns the clock
 		}
-		ClipLength = AnimationSequence->GetPlayLength();
+		ClipLength = Clip->GetPlayLength();
+
+		// SetAnimation refuses a clip made for an incompatible skeleton (the single-node instance then has no asset).
+		if (!SingleNodeInstance.IsValid() || SingleNodeInstance->GetAnimationAsset() != Clip)
+		{
+			UE_LOG(LogAnimTimeline, Warning, TEXT("%s: %s can't play on %s (skeleton %s vs mesh skeleton %s)"),
+				*GetNameSafe(Owner), *GetNameSafe(Clip), *DrivenMesh->GetName(), *GetNameSafe(Clip->GetSkeleton()),
+				DrivenMesh->GetSkeletalMeshAsset() ? *GetNameSafe(DrivenMesh->GetSkeletalMeshAsset()->GetSkeleton()) : TEXT("None"));
+			ActiveMode = EActiveMode::None;
+		}
 	}
 
 	static const TCHAR* ModeNames[] = { TEXT("None"), TEXT("AnimBlueprint"), TEXT("SingleClip"), TEXT("RateOnly (pause/play only)") };
-	UE_LOG(LogAnimTimeline, Log, TEXT("%s: timeline drives %s in %s mode"), *GetNameSafe(Owner), *DrivenMesh->GetName(), ModeNames[static_cast<int32>(ActiveMode)]);
+	UE_LOG(LogAnimTimeline, Log, TEXT("%s: timeline drives %s in %s mode%s"), *GetNameSafe(Owner), *DrivenMesh->GetName(),
+		ModeNames[static_cast<int32>(ActiveMode)], ActionClip ? *FString::Printf(TEXT(" (action %s: %s)"), *CurrentAction.ToString(), *GetNameSafe(ActionClip)) : TEXT(""));
+}
+
+// ============================================================================
+// Actions: play a named clip instead of the locomotion, then go back to it
+// ============================================================================
+
+bool UAnimationTimelineComp::PlayAction(FName ActionName)
+{
+	UAnimSequenceBase* Clip = ActionClips.FindRef(ActionName);
+	if (!Clip)
+	{
+		UE_LOG(LogAnimTimeline, Warning, TEXT("%s: no clip for action '%s' (add it to the AnimationTimelineComp's Action Clips)"),
+			*GetNameSafe(GetOwner()), *ActionName.ToString());
+		return false;
+	}
+
+	const FName PreviousAction = CurrentAction;
+	CurrentAction = ActionName;
+	ActionClip = Clip;
+	NormalizedTime = 0.f;
+	ResolveTarget();
+
+	if (ActiveMode != EActiveMode::SingleClip)
+	{
+		// The clip doesn't fit this pawn's skeleton: stay on (or go back to) the locomotion.
+		CurrentAction = NAME_None;
+		ActionClip = nullptr;
+		ResolveTarget();
+		if (!PreviousAction.IsNone())
+		{
+			OnActionChanged.Broadcast(NAME_None);
+		}
+		return false;
+	}
+
+	PushTime();
+	SetPlayState(ETimelinePlayState::Forward);
+	OnActionChanged.Broadcast(CurrentAction);
+	return true;
+}
+
+void UAnimationTimelineComp::StopAction()
+{
+	if (CurrentAction.IsNone())
+	{
+		return;
+	}
+	CurrentAction = NAME_None;
+	ActionClip = nullptr;
+	NormalizedTime = 0.f;
+	ResolveTarget();   // back to the Anim BP (walk / jog / run)
+	SetPlayState(ETimelinePlayState::Forward);
+	OnActionChanged.Broadcast(NAME_None);
 }
 
 float UAnimationTimelineComp::GetCycleLength() const
@@ -127,7 +207,7 @@ bool UAnimationTimelineComp::CanScrub() const
 
 float UAnimationTimelineComp::WrapOrClamp(float Time) const
 {
-	return bLoop ? FMath::Frac(Time) : FMath::Clamp(Time, 0.f, 1.f);
+	return ShouldLoop() ? FMath::Frac(Time) : FMath::Clamp(Time, 0.f, 1.f);
 }
 
 void UAnimationTimelineComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -147,7 +227,7 @@ void UAnimationTimelineComp::TickComponent(float DeltaTime, ELevelTick TickType,
 		const float Direction = PlayState == ETimelinePlayState::Reverse ? -1.f : 1.f;
 		const float Next = NormalizedTime + Direction * PlaySpeed * DeltaTime / Cycle;
 
-		if (!bLoop && (Next >= 1.f || Next <= 0.f))
+		if (!ShouldLoop() && (Next >= 1.f || Next <= 0.f))
 		{
 			NormalizedTime = FMath::Clamp(Next, 0.f, 1.f);
 			SetPlayState(ETimelinePlayState::Paused);
@@ -204,7 +284,7 @@ void UAnimationTimelineComp::SetPlayState(ETimelinePlayState NewState)
 
 void UAnimationTimelineComp::PlayForward()
 {
-	if (!bLoop && NormalizedTime >= 1.f)
+	if (!ShouldLoop() && NormalizedTime >= 1.f)
 	{
 		NormalizedTime = 0.f;
 	}
@@ -213,7 +293,7 @@ void UAnimationTimelineComp::PlayForward()
 
 void UAnimationTimelineComp::PlayReverse()
 {
-	if (!bLoop && NormalizedTime <= 0.f)
+	if (!ShouldLoop() && NormalizedTime <= 0.f)
 	{
 		NormalizedTime = 1.f;
 	}

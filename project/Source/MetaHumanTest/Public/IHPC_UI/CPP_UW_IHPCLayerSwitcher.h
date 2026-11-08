@@ -13,8 +13,12 @@
 //     Body     -> layer "Skin"     (the whole MetaHuman: body, face, hair, clothes)
 //     Muscles  -> layer "Muscles"  (segmented muscle mesh, skin shown as an x-ray shell)
 //     Skeleton -> layer "Skeleton" (segmented skeleton mesh)
-//   UAnatomyViewComp::ShowLayer animates there (skin fades / ghosts out, the inner layer appears). There is no
-//   opacity slider: the parent class's slider is kept only because the parent binds it, and stays Collapsed.
+//   Each button animates the AnatomyView to a fixed "skin amount" (same scale as the old anatomy slider,
+//   1 = top / all skin): Body = 1.0, Muscles = 0.5, Skeleton = 0.0 (BodySkinAmount / MusclesSkinAmount /
+//   SkeletonSkinAmount; reveal depth = 1 - amount). The pawns' AnatomyView uses equal fade lengths for Skin and
+//   Muscles, so 0.5 is exactly "muscles fully shown, skin as an x-ray shell". Untick bUseSkinAmounts to jump to the
+//   named layers' own depths instead. There is no opacity slider: the parent class's slider is kept only because
+//   the parent binds it, and stays Collapsed.
 //
 //   The parent class (UCPP_UW_AnatomyViewSwitcher) finds the AnatomyView component on the possessed pawn and
 //   re-binds when the controller possesses another pawn (Abby -> Beau -> ...). A pawn without the component
@@ -70,6 +74,28 @@ public:
 	/** UAnatomyViewComp layer shown by the Skeleton button. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "IHPC|Layers")
 	FName SkeletonLayerName = TEXT("Skeleton");
+
+	/** Use the fixed "skin amounts" below (true, default) instead of jumping to the named layers' own depths. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "IHPC|Layers")
+	bool bUseSkinAmounts = true;
+
+	/** How much of the outside each button shows, on the old anatomy slider's scale (1 = all skin, 0 = only bones):
+	 *  the button animates the AnatomyView to reveal depth 1 - amount. Left button: all skin. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "IHPC|Layers", meta = (ClampMin = "0", ClampMax = "1", EditCondition = "bUseSkinAmounts"))
+	float BodySkinAmount = 1.f;
+
+	/** Middle button: the muscles (skin turned into the x-ray shell). With the AnatomyView's default layers
+	 *  (Skin / Muscles / Skeleton, equal fade lengths) depth 0.5 is exactly where the muscles are fully shown. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "IHPC|Layers", meta = (ClampMin = "0", ClampMax = "1", EditCondition = "bUseSkinAmounts"))
+	float MusclesSkinAmount = 0.5f;
+
+	/** Right button: the bones. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "IHPC|Layers", meta = (ClampMin = "0", ClampMax = "1", EditCondition = "bUseSkinAmounts"))
+	float SkeletonSkinAmount = 0.f;
+
+	/** Reveal depth (0 = skin ... 1 = skeleton) a button animates to on the possessed pawn, or -1 without anatomy layers. */
+	UFUNCTION(BlueprintPure, Category = "IHPC|Layers")
+	float GetRevealDepthForLayer(EIHPCAnatomyLayer Layer) const;
 
 	// ---- Look (textures made from the Figma pictures by Tools/FigmaUI/make_ui_textures.py) ----------
 

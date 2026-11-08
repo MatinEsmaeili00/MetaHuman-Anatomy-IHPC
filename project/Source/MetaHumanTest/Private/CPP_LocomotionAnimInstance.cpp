@@ -114,6 +114,22 @@ void UCPP_LocomotionAnimInstance::MovePhase(float NewPhase)
 	Phase = NewPhase;
 }
 
+void UCPP_LocomotionAnimInstance::SetWalkAnimation(UAnimSequenceBase* NewAnimation)
+{
+
+	if (!NewAnimation)
+	{
+		return;
+	}
+
+	WalkAnim = NewAnimation;
+
+	Walk.Build(WalkAnim, CycleStartMarker);
+
+	UpdateOutputs();
+	
+}
+
 void UCPP_LocomotionAnimInstance::UpdateOutputs()
 {
 	WalkJogAlpha = FMath::GetMappedRangeValueClamped(FVector2f(WalkToJogSpeed), FVector2f(0.f, 1.f), BlendSpeed);

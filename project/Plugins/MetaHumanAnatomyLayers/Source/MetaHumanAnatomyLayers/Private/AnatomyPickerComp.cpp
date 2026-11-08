@@ -62,7 +62,12 @@ void UAnatomyPickerComp::Resolve()
 	USkeletalMeshComponent* Source = Cast<USkeletalMeshComponent>(Mesh);
 	if (Source && HighlightMID && !HighlightMesh)
 	{
-		USkeletalMeshComponent* Copy = NewObject<USkeletalMeshComponent>(GetOwner(), TEXT("MuscleHighlight"));
+		// One copy PER PICKER, so the name must be unique: with a fixed name ("MuscleHighlight") the second picker
+		// (BonePicker) re-created the first picker's copy in place - the muscle picker then drove a material that
+		// was no longer on any mesh, and hovered muscles never lit up.
+		const FName CopyName = MakeUniqueObjectName(GetOwner(), USkeletalMeshComponent::StaticClass(),
+			FName(*FString::Printf(TEXT("%s_Highlight"), *GetName())));
+		USkeletalMeshComponent* Copy = NewObject<USkeletalMeshComponent>(GetOwner(), CopyName);
 		Copy->SetSkeletalMeshAsset(Source->GetSkeletalMeshAsset());
 		Copy->SetupAttachment(Source);
 		Copy->ComponentTags.Add(TEXT("AnatomyIgnore")); // not a layer of its own for UAnatomyViewComp

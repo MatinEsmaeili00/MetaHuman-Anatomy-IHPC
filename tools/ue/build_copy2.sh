@@ -4,7 +4,7 @@
 # (libUnrealEditor-MetaHumanTest-000N.dylib) and does NOT update Binaries/Mac/UnrealEditor.modules, so a fresh editor
 # would load the previous library. After the build this script points each manifest at its newest library.
 set -e
-PROJECT_DIR="${PROJECT_DIR:-/Users/mesmae6/Perforce/maclab_digitalhuman_main/Claude/MetaHumanTestCOPY2}"
+PROJECT_DIR="${PROJECT_DIR:-/Users/mesmae6/Perforce/maclab_digitalhuman_main/Claude/MetaHumanTestCOPY2B}"
 ENGINE="${ENGINE:-/Users/Shared/Epic Games/UE_5.8}"
 if pgrep -f "UnrealEditor $PROJECT_DIR/MetaHumanTest.uproject" >/dev/null; then
   echo "Close the COPY2 editor first"; exit 1

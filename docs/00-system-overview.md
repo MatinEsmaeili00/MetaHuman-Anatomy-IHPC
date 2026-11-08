@@ -12,9 +12,10 @@ Abby's (and Beau's) anatomy layers, gait timeline and muscle / bone information,
 | **Title bar + menu** (`WBP_IHPC_HUD`) | Profile, Progress, Saved Videos, History & Timeline, Settings; panels close with the round X |
 | **Analysis panel** (Saved Videos) | Graphs, Active Muscles, Tagged Points, video cards that jump the animation (demo data) |
 | **Timeline / playback bar** (`WBP_IHPC_Timeline`, bottom centre) | Record, restart, pause, slower / faster (×0.25…×3), scrub, play, next marker, bookmark — drives the pawn's `UAnimationTimelineComp` |
-| **Layer switcher** (`WBP_IHPC_LayerSwitcher`, bottom right) | **Body** = skin, **Muscles** = segmented muscles (skin as an x-ray shell), **Skeleton** = segmented skeleton — `UAnatomyViewComp::ShowLayer`, animated, no opacity slider |
+| **Actions menu** (4th tab "Actions" → panel with `Action_Running`, `Action_TennisForehand`, `Action_SoccerWarmup`) | Plays that clip on the possessed pawn (`UAnimationTimelineComp::PlayAction`); playing action green; click again → walk / jog / run ([docs/06](06-actions-characters-highlight.md)) |
+| **Layer switcher** (`WBP_IHPC_LayerSwitcher`, bottom right) | Skin amount **1 / 0.5 / 0**: **Body** = skin, **Muscles** = segmented muscles (skin as an x-ray shell), **Skeleton** = segmented skeleton — `UAnatomyViewComp::SetRevealDepth(1 − amount)`, animated, no opacity slider |
 | **Hover / click** in the Muscles or Skeleton view (`WB_MuscleInfo`) | Tooltip "*name (side)*" at the mouse; click → popup: name – side, region, *What it does*, *When running*, *Watch out for*, Close |
-| **Pawn switcher** (`WB_PawnSwitcher`) | Abby → Beau → skeleton model; every widget re-binds to the new pawn |
+| **Pawn switcher** (`WB_PawnSwitcher`) | Abby → Beau → skeleton model → **Madi** (→ Grant once assembled); every widget re-binds to the new pawn |
 | **Speed slider** (`BP_SpeedSlider`) | Gait speed: walk → jog → run |
 | Mouse | Right-drag orbit, left-drag pan, wheel zoom (`UCPP_MouseFunctionComp`) |
 
@@ -40,7 +41,9 @@ UAnimationTimelineComp ─► ABP_*_Timeline (UCPP_LocomotionAnimInstance): walk
 
 ## 3. Characters
 
-`BP_MH_CH_Abby8` (spawned by `BP_GameMode`) and `BP_Beau_Pawn` share the same layout:
+`BP_MH_CH_Abby8` (spawned by `BP_GameMode`), `BP_Beau_Pawn` and `BP_Madi_Pawn` (2026-11-08, a copy of Beau's pawn
+with Madi's assembled MetaHuman parts, same `ABP_Beau_Timeline` because both use `metahuman_base_skel`) share the
+same layout:
 
 ```
 Root
@@ -52,7 +55,7 @@ Components
    AnatomyView     UAnatomyViewComp    layers Skin (everything else) / Muscles (MuscleMesh) / Skeleton (SkeletonMesh)
    AnatomyPicker   UAnatomyPickerComp  DA_Atlas_Muscles_Segmented, mesh MuscleMesh, layer Muscles, radius 2 cm
    BonePicker      UAnatomyPickerComp  DA_Atlas_Skeleton_Segmented, mesh SkeletonMesh, layer Skeleton, radius 1.5 cm
-   AnimationTimeline UAnimationTimelineComp   (gait cycle 0.967 s, looping)
+   AnimationTimeline UAnimationTimelineComp   (gait cycle 0.967 s, looping) + ActionClips {Running, TennisForehand, SoccerWarmup}
    MouseFunction   UCPP_MouseFunctionComp
 ```
 
@@ -68,7 +71,8 @@ fully faded meshes are hidden but keep ticking so Leader Pose followers keep ani
 on the part stored relative to a bone. Every frame the picker places those points on the animated skeleton and takes
 the front-most part whose point lies within the pick radius of the mouse ray. A picker only works while its layer is
 the outermost visible one, so muscles and bones never compete. The hovered / selected part glows through a highlight
-copy of the mesh (`M_Anatomy_MuscleHighlight` compares the vertex-colour ID).
+copy of the mesh, one per picker (`AnatomyPicker_Highlight_0`, `BonePicker_Highlight_0`;
+`M_Anatomy_MuscleHighlight` compares the vertex-colour ID — the GPU byte R = ID since job 18 fixed the encoding).
 
 ## 4. Code map
 
@@ -78,13 +82,14 @@ copy of the mesh (`M_Anatomy_MuscleHighlight` compares the vertex-colour ID).
 | | `UAnatomyPickerComp` | Hover / click picking of labelled parts, highlight |
 | | `UMuscleAtlas` (`FMuscleInfo`, `FMuscleSample`) | Per-part ID, key, name, side, region, function / running / injury, samples |
 | `Source/MetaHumanTest` | `CPP_PlayerController` | Creates widgets (incl. IHPC HUD), input, pawn switching, drives **all** pickers |
-| | `UAnimationTimelineComp`, `IAnimationTimelineSource` | Play / pause / reverse / scrub / step the gait cycle |
+| | `UAnimationTimelineComp`, `IAnimationTimelineSource` | Play / pause / reverse / scrub / step the gait cycle; `PlayAction` / `StopAction` play named action clips instead of the locomotion |
 | | `UCPP_LocomotionAnimInstance` | Walk / jog / run at an explicit phase; running-neck correction |
 | | `UCPP_UW_MuscleInfo` | Tooltip + popup; listens to **every** picker on the pawn |
 | | `UCPP_UW_AnatomyViewSwitcher` | Base of the layer switcher: binds to the pawn's `UAnatomyViewComp`, re-binds on possession |
 | | `UCPP_MouseFunctionComp` | Orbit / pan / zoom (now `BlueprintCallable`) |
 | `Source/MetaHumanTest/*/IHPC_UI` | `UCPP_UW_IHPCHud`, `…Timeline`, `…AnalysisPanel`, `…GraphAccordion`, `…VideoCard`, `…ToggleSwitch`, `…NavTab`, `…LineGraph`, `…ListRow`, `…VideosRow` | The Figma UI (one C++ class + one Widget Blueprint each) |
-| | `UCPP_UW_IHPCLayerSwitcher` | **Rewritten:** Body / Muscles / Skeleton → `ShowLayer` by layer name |
+| | `UCPP_UW_IHPCLayerSwitcher` | Body / Muscles / Skeleton → skin amounts 1 / 0.5 / 0 (`bUseSkinAmounts`; off = `ShowLayer` by layer name) |
+| | `UCPP_UW_IHPCHud` | … + Actions menu: binds every `Action_<Name>` button (`UIHPCActionButtonProxy`), `SelectAction`, highlight / greyed out |
 | | `UIHPCUILibrary` | Finds the pawn's timeline; play / pause / seek / speed (`IsPlaying()` after the merge) |
 
 ## 5. Asset map
@@ -97,6 +102,8 @@ copy of the mesh (`M_Anatomy_MuscleHighlight` compares the vertex-colour ID).
 | `/Game/Widget/WB_MuscleInfo`, `WB_PawnSwitcher` | Abby-branch widgets (`WB_AnatomyViewSwitcher`, `WB_AmationTimeline` kept, not created) |
 | `/Game/MetaHumans/MH_CH_Abby5/BP_MH_CH_Abby8` | Abby |
 | `/Game/MadisonTesting/BeauMHCharacter/BP_Beau_Pawn` | Beau |
+| `/Game/MadisonTesting/MadiMHCharacter/BP_Madi_Pawn`, `…/Unpacked/MHC_Madi/` | Madi (pawn, assembled MetaHuman) |
+| `/Game/MadisonAnimations/AS_*`, `/Game/MadisonAnimations/MetaHuman/AS_*_MH` | Action clips (Abby's skeleton; retargeted to `metahuman_base_skel`) |
 | `/Game/Abby_Animation/Enhanced/ABP_Abby_Timeline`, `/Posture/*_Upright` | Timeline locomotion ABP, upright walk / jog / run |
 | `/MetaHumanAnatomyLayers/Anatomy/Segmented/` | `SKM_Anatomy_Muscles_Segmented`, `SKM_Anatomy_Skeleton_Segmented`, `SK_Anatomy_MetaHumanBody`, `DA_Atlas_Muscles_Segmented`, `DA_Atlas_Skeleton_Segmented` |
 | `/MetaHumanAnatomyLayers/Anatomy/Materials/` | Muscle, bone, fade, x-ray, hidden, highlight materials |
@@ -112,6 +119,10 @@ copy of the mesh (`M_Anatomy_MuscleHighlight` compares the vertex-colour ID).
 | Build layers | UE Geometry Script, [job 08](../scripts/ue_jobs/08_build_segmented_anatomy.py) `muscles` / `skeleton` / `samples_*` | the two skeletal meshes, [`data/segmented_*.json`](../data/) |
 | Labels | [job 10](../scripts/ue_jobs/10_build_atlases.py) + [`data/muscle_info.json`](../data/muscle_info.json), [`data/bone_info.json`](../data/bone_info.json), [`data/muscle_names.json`](../data/muscle_names.json) | the two atlases |
 | Wire | [job 11](../scripts/ue_jobs/11_wire_segmented_layers.py), [job 13](../scripts/ue_jobs/13_pick_radius.py) | Abby8 / Beau components |
+
+| Action clips → MetaHuman skeleton | [job 15](../scripts/ue_jobs/15_retarget_actions_to_metahuman.py) (`RTG_MH_IKRig`) | `/Game/MadisonAnimations/MetaHuman/AS_*_MH` |
+| New character | [job 19](../scripts/ue_jobs/19_assemble_metahuman.py) assemble → [job 16](../scripts/ue_jobs/16_make_metahuman_pawn.py) pawn → [job 17](../scripts/ue_jobs/17_wire_actions_and_layers.py) clips + fade lengths (`tools/ue/add_metahuman_pawn.sh`) | `BP_<Name>_Pawn` in the pawn switcher |
+| Vertex-colour IDs | [job 18](../scripts/ue_jobs/18_fix_part_id_vertex_colors.py) (idempotent) | GPU byte R = part ID |
 
 To change a muscle's text: edit `data/muscle_info.json`, run job 10. To rebuild a layer after changing its source:
 run job 08 for it (it recreates the mesh asset), then job 08 `samples_*` and job 10.
