@@ -50,3 +50,22 @@ Target: `Claude/MetaHumanTestCOPY2`. Every COPY2 file that gets replaced or edit
 **Not copied:** `Abby_Animation/Fixed/` (experimental, marked for deletion in the Abby TODO), `ExampleContent/`
 (ChaosFlesh sample, unused), `Main.umap` (COPY2's is kept: IHPC Level Blueprint fix + the `Muscles` folder), the
 `Avenir` fonts and `HeaderGradientTextBackground` (COPY2's are the re-imported ones the IHPC UI uses).
+
+## Step 3 — Editor fixes after the merge (editor Python jobs)
+
+| Job | What |
+|---|---|
+| [`scripts/ue_jobs/01_verify_merge.py`](../scripts/ue_jobs/01_verify_merge.py) | Loads 13 merged assets, checks their references, compiles them. All compile. One stale soft reference in `BP_MH_CH_Abby8` to a PIE world (`/Game/UEDPIE_0_Main`) inherited from the Abby branch — harmless. `BP_GameMode`: Default Pawn `BP_MH_CH_Abby8`, controller `BP_PlayerController`. |
+| [`scripts/ue_jobs/02_controller_ihpc_settings.py`](../scripts/ue_jobs/02_controller_ihpc_settings.py) | `BP_PlayerController`: Main HUD = `WBP_IHPC_HUD`, Anatomy View Switcher = `WBP_IHPC_LayerSwitcher`, Timeline = none. Kept: speed slider, pawn switcher, muscle info. Recompiled + saved `WBP_IHPC_LayerSwitcher` (layers `Skin` / `Muscles` / `Skeleton`). |
+| [`scripts/ue_jobs/03_pie_probe.py`](../scripts/ue_jobs/03_pie_probe.py) via `tools/ue/pie.sh` | Drives a running PIE session: press a layer button, switch pawn, play / pause / scrub, print the state. |
+
+### First Play-In-Editor of the merged project
+
+`pie.sh status` → pawn `BP_MH_CH_Abby8`, layers `Skin / Muscles / Skeleton`, timeline playing (0.967 s gait cycle),
+layer switcher enabled and bound; on screen: `WBP_IHPC_HUD`, `WBP_IHPC_LayerSwitcher`, `BP_SpeedSlider`,
+`WB_PawnSwitcher`, `WB_MuscleInfo`.
+
+`pie.sh layer:muscles` (= clicking the IHPC **Muscles** button): skin switches to the x-ray shell, the muscle and
+skeleton layers appear (still the old Emil upper-body anatomy at this point):
+
+![Merged: IHPC UI + Abby anatomy, Muscles button](screenshots/11_merged_muscles.png)

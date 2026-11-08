@@ -24,10 +24,11 @@ Target project: `Claude/MetaHumanTestCOPY2` (IHPC UI). Source of the functionali
 
 ## 2. Port the Abby assets
 - [x] Copy: `Abby_Animation/Enhanced`, `Abby_Animation/Posture`, `MadisonTesting/BeauMHCharacter` (Beau), `Widget/WB_MuscleInfo`, and Abby's `WB_PawnSwitcher`, `WB_AnatomyViewSwitcher`, `WB_AmationTimeline`, `BP_SpeedSlider`, `BP_MH_CH_Abby8`
-- [~] `BP_PlayerController`: Abby's version + the IHPC settings (Main HUD = `WBP_IHPC_HUD`, Anatomy View Switcher = `WBP_IHPC_LayerSwitcher`, no prototype timeline)
+- [x] `BP_PlayerController`: Abby's version + the IHPC settings (Main HUD = `WBP_IHPC_HUD`, Anatomy View Switcher = `WBP_IHPC_LayerSwitcher`, no prototype timeline)
 - [x] Keep COPY2's `Main` level (IHPC fixes + `Muscles` folder + `SKELeton`)
-- [ ] `BP_GameMode`: Abby's (Default Pawn = `BP_MH_CH_Abby8`; COPY2 spawned `BP_MH_CH_Abby9`) — copied, verify in PIE
-- [ ] Check references: nothing points at a missing asset
+- [x] `BP_GameMode`: Abby's (Default Pawn = `BP_MH_CH_Abby8`; COPY2 spawned `BP_MH_CH_Abby9`) — verified in PIE
+- [x] Check references: everything resolves (one stale PIE-world soft reference in `BP_MH_CH_Abby8`, inherited, harmless)
+- [x] First PIE: IHPC HUD + timeline + layer switcher drive Abby's anatomy layers ([screenshot](docs/screenshots/11_merged_muscles.png))
 
 ## 3. Segmented anatomy that follows the animation
 - [ ] Export Abby's body (MetaHuman skeleton + weights) and the segmented muscles / skeleton to Blender
@@ -38,7 +39,7 @@ Target project: `Claude/MetaHumanTestCOPY2` (IHPC UI). Source of the functionali
 - [ ] Atlas data: readable name, side, group and info text for every muscle and bone (labels for hover / click)
 
 ## 4. Wire everything to the IHPC UI
-- [ ] Layer switcher buttons → `AnatomyView` on the possessed pawn (Abby or Beau)
+- [x] Layer switcher buttons → `AnatomyView` on the possessed pawn (Abby or Beau)
 - [ ] IHPC timeline bar → `UAnimationTimelineComp` (play / pause / speed / scrub / restart / markers)
 - [ ] Muscle (and bone) hover name + click info popup in the matching layer
 - [ ] Analysis panel "Active Muscles" list from the atlas

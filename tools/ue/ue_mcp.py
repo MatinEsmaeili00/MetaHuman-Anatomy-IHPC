@@ -41,8 +41,30 @@ def tool(name, args):
         return "ERROR: " + json.dumps(r["error"])
     res = r.get("result", {})
     out = []
-    for c in res.get("content", []):
-        out.append(c.get("text", json.dumps(c)))
+    for i, c in enumerate(res.get("content", [])):
+        if c.get("type") == "image" and c.get("data"):
+            # Save images (viewport / editor captures) instead of printing base64.
+            import base64, os
+            path = os.environ.get("UE_MCP_IMAGE", "/tmp/ue_mcp_capture.png")
+            if i:
+                root, ext = os.path.splitext(path)
+                path = f"{root}_{i}{ext}"
+            with open(path, "wb") as f:
+                f.write(base64.b64decode(c["data"]))
+            out.append(f"[image saved: {path}]")
+        else:
+            text = c.get("text", json.dumps(c)[:2000])
+            try:  # toolset captures come back as {"returnValue": {"mimeType": "image/png", "data": "<base64>"}}
+                rv = json.loads(text).get("returnValue")
+                if isinstance(rv, dict) and str(rv.get("mimeType", "")).startswith("image/") and rv.get("data"):
+                    import base64, os
+                    path = os.environ.get("UE_MCP_IMAGE", "/tmp/ue_mcp_capture.png")
+                    with open(path, "wb") as f:
+                        f.write(base64.b64decode(rv["data"]))
+                    text = f"[image saved: {path}]"
+            except Exception:
+                pass
+            out.append(text)
     if res.get("isError"):
         out.insert(0, "TOOL ERROR:")
     return "\n".join(out)
