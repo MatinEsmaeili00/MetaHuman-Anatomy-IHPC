@@ -15,17 +15,18 @@ Target project: `Claude/MetaHumanTestCOPY2` (IHPC UI). Source of the functionali
 - [ ] Full system documentation ([docs/00](docs/00-system-overview.md)), kept up to date as the work lands
 
 ## 1. Merge the C++ (Abby → COPY2)
-- [ ] Back up every COPY2 file that gets changed (`Saved/ClaudeBackup/`)
-- [ ] Copy the `MetaHumanAnatomyLayers` plugin into COPY2, enable it in the `.uproject`
-- [ ] Source: take Abby's versions of the 23 changed files, keep `IHPC_UI/`, re-apply the IHPC additions to `CPP_PlayerController` (`MainHUDWidgetClass`, `MainHUDZOrder`, `GetMainHUD`) and `Build.cs` (`UMG`, `Slate`, `SlateCore`)
-- [ ] Adapt `IHPCUILibrary` to the rewritten `UAnimationTimelineComp` (`bIsPlaying` → `IsPlaying()`)
-- [ ] Rewrite `UCPP_UW_IHPCLayerSwitcher`: Body / Muscles / Skeleton buttons call `UAnatomyViewComp::ShowLayer` (no opacity slider, no Fade values, no tag lookups); re-bind on pawn change
-- [ ] Build `MetaHumanTestEditor` (Mac, Development) with no errors
+- [x] Back up every COPY2 file that gets changed (`Saved/ClaudeBackup/`)
+- [x] Copy the `MetaHumanAnatomyLayers` plugin into COPY2, enable it in the `.uproject`
+- [x] Source: take Abby's versions of the 23 changed files, keep `IHPC_UI/`, re-apply the IHPC additions to `CPP_PlayerController` (`MainHUDWidgetClass`, `MainHUDZOrder`, `GetMainHUD`) and `Build.cs` (`UMG`, `Slate`, `SlateCore`)
+- [x] Adapt `IHPCUILibrary` to the rewritten `UAnimationTimelineComp` (`bIsPlaying` → `IsPlaying()`)
+- [x] Rewrite `UCPP_UW_IHPCLayerSwitcher`: Body / Muscles / Skeleton buttons call `UAnatomyViewComp::ShowLayer` (no opacity slider, no Fade values, no tag lookups); re-bind on pawn change
+- [x] Build `MetaHumanTestEditor` (Mac, Development) with no errors
 
 ## 2. Port the Abby assets
-- [ ] Copy: `Abby_Animation/Enhanced`, `Abby_Animation/Posture`, `MadisonTesting/BeauMHCharacter` (Beau), `Widget/WB_MuscleInfo`, and Abby's `WB_PawnSwitcher`, `WB_AnatomyViewSwitcher`, `WB_AmationTimeline`, `BP_SpeedSlider`, `BP_MH_CH_Abby8`
-- [ ] `BP_PlayerController`: Abby's version + the IHPC settings (Main HUD = `WBP_IHPC_HUD`, Anatomy View Switcher = `WBP_IHPC_LayerSwitcher`, no prototype timeline)
-- [ ] Keep COPY2's `Main` level (IHPC fixes + `Muscles` folder + `SKELeton`)
+- [x] Copy: `Abby_Animation/Enhanced`, `Abby_Animation/Posture`, `MadisonTesting/BeauMHCharacter` (Beau), `Widget/WB_MuscleInfo`, and Abby's `WB_PawnSwitcher`, `WB_AnatomyViewSwitcher`, `WB_AmationTimeline`, `BP_SpeedSlider`, `BP_MH_CH_Abby8`
+- [~] `BP_PlayerController`: Abby's version + the IHPC settings (Main HUD = `WBP_IHPC_HUD`, Anatomy View Switcher = `WBP_IHPC_LayerSwitcher`, no prototype timeline)
+- [x] Keep COPY2's `Main` level (IHPC fixes + `Muscles` folder + `SKELeton`)
+- [ ] `BP_GameMode`: Abby's (Default Pawn = `BP_MH_CH_Abby8`; COPY2 spawned `BP_MH_CH_Abby9`) — copied, verify in PIE
 - [ ] Check references: nothing points at a missing asset
 
 ## 3. Segmented anatomy that follows the animation

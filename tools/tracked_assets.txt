@@ -1,0 +1,18 @@
+# Content-relative (or Plugins/-relative) paths of .uasset files this work created or changed in MetaHumanTestCOPY2.
+# tools/sync_from_project.sh copies each one into project/. Big shared content (Beau's MetaHuman, scans) stays in Perforce.
+Content/Blueprints/BP_PlayerController.uasset
+Content/Blueprints/BP_GameMode.uasset
+Content/Blueprints/BP_SpeedSlider.uasset
+Content/MetaHumans/MH_CH_Abby5/BP_MH_CH_Abby8.uasset
+Content/Widget/WB_MuscleInfo.uasset
+Content/Widget/WB_PawnSwitcher.uasset
+Content/Widget/WB_AnatomyViewSwitcher.uasset
+Content/Widget/WB_AmationTimeline.uasset
+Content/Abby_Animation/Enhanced/ABP_Abby_Timeline.uasset
+Content/Abby_Animation/Posture/RTG_Mixamo_To_Abby_Posture.uasset
+Content/Abby_Animation/Posture/Abby_Walking_Anim_Upright.uasset
+Content/Abby_Animation/Posture/Abby_Jogging_Upright.uasset
+Content/Abby_Animation/Posture/Abby_Running__2__Upright.uasset
+Content/MadisonTesting/BeauMHCharacter/BP_Beau_Pawn.uasset
+Content/MadisonTesting/BeauMHCharacter/Animation/ABP_Beau_Timeline.uasset
+Content/UserInterface/IHPC/Widgets/WBP_IHPC_LayerSwitcher.uasset

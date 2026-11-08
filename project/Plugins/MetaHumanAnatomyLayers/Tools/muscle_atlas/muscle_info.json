@@ -1,0 +1,121 @@
+{
+  "trapezius": {
+    "name": "Trapezius",
+    "region": "Upper back and neck",
+    "function": "Lifts, squeezes and steadies the shoulder blades and supports the head.",
+    "running": "Holds the shoulders down and back so the arms can swing freely; tension here shrugs the shoulders up.",
+    "injury": "Neck and upper-back tension from a forward head or hunched, high shoulders."
+  },
+  "deltoid": {
+    "name": "Deltoid",
+    "region": "Shoulder",
+    "function": "Raises the arm forwards, sideways and backwards.",
+    "running": "Drives the forward-and-back arm swing that balances the legs.",
+    "injury": "Shoulder strain or impingement from overuse."
+  },
+  "pectoralis_major": {
+    "name": "Pectoralis major",
+    "region": "Chest",
+    "function": "Pulls the arm in front of the body and down.",
+    "running": "Controls the forward part of the arm swing; it should not pull the arms across the body.",
+    "injury": "Tight chest muscles round the shoulders forward and spoil running posture."
+  },
+  "biceps": {
+    "name": "Biceps brachii",
+    "region": "Front of the upper arm",
+    "function": "Bends the elbow and turns the palm up.",
+    "running": "Holds the elbow at roughly 90 degrees through the arm swing.",
+    "injury": "Biceps tendinopathy at the shoulder or the elbow."
+  },
+  "triceps": {
+    "name": "Triceps brachii",
+    "region": "Back of the upper arm",
+    "function": "Straightens the elbow and pulls the arm back.",
+    "running": "Powers the backward part of the arm swing.",
+    "injury": "Triceps tendinopathy near the elbow."
+  },
+  "forearm": {
+    "name": "Forearm flexors and extensors",
+    "region": "Forearm",
+    "function": "Control the wrist and fingers and produce grip.",
+    "running": "Should stay relaxed: loose hands save energy.",
+    "injury": "Tennis / golfer's elbow from repetitive gripping."
+  },
+  "hand": {
+    "name": "Hand muscles",
+    "region": "Hand",
+    "function": "Fine finger movement and grip.",
+    "running": "A loose, cupped hand avoids tension travelling up the arm.",
+    "injury": "Overuse strain and cramps."
+  },
+  "latissimus_dorsi": {
+    "name": "Latissimus dorsi",
+    "region": "Side of the back",
+    "function": "Pulls the arm down and back and helps stabilise the spine.",
+    "running": "Links each arm swing with the opposite hip through the back fascia.",
+    "injury": "Tight lats limit overhead reach and can pull the shoulders forward."
+  },
+  "erector_spinae": {
+    "name": "Erector spinae",
+    "region": "Lower back (along the spine)",
+    "function": "Straightens the spine and holds it upright.",
+    "running": "Controls the forward lean of the trunk on every stride.",
+    "injury": "Low-back pain from fatigue or an over-arched back."
+  },
+  "rectus_abdominis": {
+    "name": "Rectus abdominis",
+    "region": "Front of the abdomen",
+    "function": "Bends the trunk forward and braces the core.",
+    "running": "Stops the pelvis tipping forward, which protects the lower back.",
+    "injury": "Abdominal strain; a weak core lets the lower back arch."
+  },
+  "external_oblique": {
+    "name": "External oblique",
+    "region": "Side of the abdomen",
+    "function": "Rotates and side-bends the trunk.",
+    "running": "Controls trunk rotation against the arm swing.",
+    "injury": "Side strains; the 'side stitch' area."
+  },
+  "serratus_anterior": {
+    "name": "Serratus anterior",
+    "region": "Side of the rib cage",
+    "function": "Holds the shoulder blade flat against the ribs and rotates it upward.",
+    "running": "Keeps the shoulder blades stable while the arms swing.",
+    "injury": "Weakness causes a 'winged' shoulder blade."
+  },
+  "scm": {
+    "name": "Sternocleidomastoid",
+    "region": "Front and side of the neck",
+    "function": "Turns the head and bends the neck forward.",
+    "running": "Should stay quiet; a forward-poking head overloads it.",
+    "injury": "Neck strain and tension headaches with a forward head posture."
+  },
+  "jaw": {
+    "name": "Masseter and temporalis",
+    "region": "Jaw",
+    "function": "Close the jaw for chewing.",
+    "running": "Clenching the jaw while running wastes energy and tightens the neck.",
+    "injury": "Jaw tension and TMJ pain."
+  },
+  "gluteus_maximus": {
+    "name": "Gluteus maximus",
+    "region": "Buttock",
+    "function": "Extends the hip (moves the thigh back).",
+    "running": "The main push-off muscle of the stride.",
+    "injury": "Weak glutes lead to knee collapse, IT-band and low-back problems."
+  },
+  "gluteus_medius": {
+    "name": "Gluteus medius",
+    "region": "Side of the hip",
+    "function": "Moves the thigh out to the side and keeps the pelvis level.",
+    "running": "Stops the opposite hip dropping while standing on one leg.",
+    "injury": "Weakness causes hip drop, IT-band syndrome and runner's knee."
+  },
+  "hip_flexors": {
+    "name": "Hip flexors (iliopsoas)",
+    "region": "Front of the hip",
+    "function": "Lift the thigh forward.",
+    "running": "Swing the leg through for the next step.",
+    "injury": "Tight hip flexors tilt the pelvis forward and load the lower back; hip-flexor strain."
+  }
+}

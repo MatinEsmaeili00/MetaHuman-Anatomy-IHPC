@@ -16,6 +16,7 @@ bone is its own labelled part.
 - **Full system documentation (architecture, classes, assets, data flow):** [docs/00-system-overview.md](docs/00-system-overview.md)
 - **Investigation (what each project has, what conflicts):** [docs/01-investigation.md](docs/01-investigation.md)
 - **What's in the BlenderContent folder:** [docs/02-blender-content.md](docs/02-blender-content.md)
+- **Merge steps (C++ + assets):** [docs/03-merge.md](docs/03-merge.md)
 
 ## Repo layout
 

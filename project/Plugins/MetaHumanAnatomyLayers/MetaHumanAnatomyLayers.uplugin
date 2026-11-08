@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "1.1",
+	"FriendlyName": "MetaHuman Anatomy Layers",
+	"Description": "Muscle and skeleton anatomy layers that follow a MetaHuman body's animation via Leader Pose (anatomy meshes with MetaHuman bone names), an Anatomy View component that fades skin -> muscles -> skeleton like an anatomy app, plus Python tools to build and wire them.",
+	"Category": "Other",
+	"CreatedBy": "",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "MetaHumanAnatomyLayers",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
