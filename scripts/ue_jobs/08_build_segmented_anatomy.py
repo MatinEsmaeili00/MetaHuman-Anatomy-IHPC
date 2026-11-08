@@ -154,7 +154,7 @@ def finish(dm, part_of_vertex, parts, asset_name, material_path, rigid_bone_of_p
     for p in parts:
         vs = verts_of_part.get(p["id"], [])
         pts = [positions[v] for v in vs]
-        n = min(samples_per_part, max(4, len(vs) // 40))
+        n = min(samples_per_part, max(6, len(vs) // 12))
         picks = farthest_samples(pts, n) if pts else []
         samples, bone_totals = [], {}
         for k in picks:
@@ -254,6 +254,42 @@ elif STEP == "skeleton":
     log("vertex parts assigned; unassigned:", missing)
     finish(dm, part_of_vertex, parts, "SKM_Anatomy_Skeleton_Segmented", MAT_BONE,
            {p["id"]: p["bone"] for p in parts}, samples_per_part=12)
+
+if STEP.startswith("samples_"):
+    # Recompute picking samples from the BUILT skeletal mesh (part IDs read back from the vertex colours),
+    # without deleting / recreating the asset that the Blueprints reference.
+    layer = STEP.split("_", 1)[1]
+    asset = {"muscles": "SKM_Anatomy_Muscles_Segmented", "skeleton": "SKM_Anatomy_Skeleton_Segmented"}[layer]
+    parts = json.load(open(os.path.join(SAVED, f"segmented_{layer}.json")))["parts"]
+    skm = unreal.load_asset(f"{OUT_DIR}/{asset}")
+    dm = unreal.DynamicMesh()
+    dm, _ = AU.copy_mesh_from_skeletal_mesh(skm, dm, unreal.GeometryScriptCopyMeshFromAssetOptions(), unreal.GeometryScriptMeshReadLOD())
+    _, plist, _ = Q.get_all_vertex_positions(dm, False)
+    positions = [(v.x, v.y, v.z) for v in L.convert_vector_list_to_array(plist)]
+    cl = [x for x in VC.get_mesh_per_vertex_colors(dm) if type(x).__name__ == "GeometryScriptColorList"][0]
+    ids = [int(c.r * 255.0 + 1e-3) for c in L.convert_color_list_to_array(cl)]
+    rigid = {p["id"]: p["bone"] for p in parts} if layer == "skeleton" else None
+    per_part = 64 if layer == "muscles" else 40
+    verts_of_part = {}
+    for v, pid in enumerate(ids):
+        verts_of_part.setdefault(pid, []).append(v)
+    for p in parts:
+        vs = verts_of_part.get(p["id"], [])
+        pts = [positions[v] for v in vs]
+        n = min(per_part, max(6, len(vs) // 12))
+        samples = []
+        for k in (farthest_samples(pts, n) if pts else []):
+            v = vs[k]
+            if rigid:
+                bone = rigid[p["id"]]
+            else:
+                _, wts, ok = BW.get_vertex_bone_weights(dm, v)
+                best = max(wts, key=lambda w: w.weight) if wts else None
+                bone = BONE_NAMES[best.bone_index] if best else "pelvis"
+            samples.append({"bone": bone, "offset": vec(bone_offset(bone, pts[k]))})
+        p["samples"] = samples
+    STEP = layer
+    log(layer, "samples:", sum(len(p["samples"]) for p in parts))
 
 out_path = os.path.join(SAVED, f"segmented_{STEP}.json")
 json.dump({"step": STEP, "parts": parts}, open(out_path, "w"), indent=1)

@@ -90,3 +90,18 @@ build.wire_blueprint("/Game/MetaHumans/MyHuman/BP_MyHuman")   # creates or updat
 - Emil's finger bones are a little longer than a typical MetaHuman's, so fingertips can poke out.
 - On a much heavier body (for example Beau), the anatomy looks slimmer than the skin, because the bones only set the proportions, not the girth.
 - Muscle labels are rule-based (dominant bone and position), so a few vertices near muscle borders carry a neighbour's ID.
+
+## Segmented layers (MetaHumanTestCOPY2, 2026-11)
+
+`Anatomy/Segmented/` holds full-body **segmented** layers built for Abby (`BP_MH_CH_Abby8`, also used on Beau):
+
+| Asset | What |
+|---|---|
+| `SKM_Anatomy_Muscles_Segmented` | 186 muscles / ligaments / tendons (left + right), smooth weights transferred from Abby's body |
+| `SKM_Anatomy_Skeleton_Segmented` | 200 bones, each rigidly bound to one MetaHuman bone |
+| `SK_Anatomy_MetaHumanBody` | Copy of Abby's body skeleton (same bone names / reference pose → Leader Pose) |
+| `DA_Atlas_Muscles_Segmented`, `DA_Atlas_Skeleton_Segmented` | Labels + info text + picking samples per part |
+
+The part ID of every vertex is in its vertex colour (R = (id + 0.5) / 255). Use one `UAnatomyPickerComp` per layer
+(`MeshComponentName` + `RequiredLayerName` + atlas); a picker only works while its layer is the outermost visible
+one. How they were built: https://github.com/MatinEsmaeili00/MetaHuman-Anatomy-IHPC (docs/04-segmented-anatomy.md).

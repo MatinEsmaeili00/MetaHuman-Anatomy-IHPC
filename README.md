@@ -12,12 +12,21 @@ Merging two branches of the **MetaHumanTest** Unreal Engine 5.8 project into one
 **segmented muscles** (`SM_SM_*`, the `Muscles` folder in `Main`) and a **segmented skeleton**, so every muscle and
 bone is its own labelled part.
 
+| Muscles view (IHPC **Muscles** button), info popup | Skeleton view, femur selected |
+|---|---|
+| ![](docs/screenshots/21_seg_muscles_pie.png) | ![](docs/screenshots/22_seg_skeleton_pie.png) |
+
+**Status:** merged and working in Play-In-Editor — IHPC HUD, timeline bar and layer switcher drive Abby's / Beau's
+anatomy; 186 segmented muscles and a 200-bone segmented skeleton follow walk / jog / run with a name, side, region
+and info text for every part. Details and remaining items: [TODO.md](TODO.md).
+
 - **Progress / to-do:** [TODO.md](TODO.md)
 - **Full system documentation (architecture, classes, assets, data flow):** [docs/00-system-overview.md](docs/00-system-overview.md)
 - **Investigation (what each project has, what conflicts):** [docs/01-investigation.md](docs/01-investigation.md)
 - **What's in the BlenderContent folder:** [docs/02-blender-content.md](docs/02-blender-content.md)
 - **Merge steps (C++ + assets):** [docs/03-merge.md](docs/03-merge.md)
 - **Segmented muscles + skeleton (fitting, skinning, labels):** [docs/04-segmented-anatomy.md](docs/04-segmented-anatomy.md)
+- **Tests (PIE), known limitations:** [docs/05-testing.md](docs/05-testing.md)
 
 ## Repo layout
 
@@ -27,14 +36,16 @@ bone is its own labelled part.
 | `docs/` | Documentation, findings, screenshots |
 | `scripts/ue_jobs/` | Unreal editor Python jobs, in the order they were run |
 | `scripts/blender_jobs/` | Blender Python jobs (mesh processing, weights, IDs) |
-| `tools/ue/` | `ue_mcp.py` (tiny client for the editor's built-in MCP server), `uescript.py` (run a toolset script) |
+| `data/` | Muscle names + info text, bone info text, part tables (IDs, sides, regions, bones, picking samples) |
+| `tools/ue/` | Editor launcher, file bridge (`claude_bridge.py` / `ue_bridge.py`), MCP client (`ue_mcp.py`, `uescript.py`), PIE driver (`pie.sh`), screenshots (`pie_shot.sh`, `capture*.sh`), build (`build_copy2.sh`) |
 | `tools/blender/` | Blender inventory / alignment helpers |
+| `tools/sync_from_project.sh`, `tracked_assets.txt` | Mirror the project's changed files into `project/` |
 
 ## How Claude talks to the tools
 
 * **Unreal:** UE 5.8's experimental *Unreal MCP* plugin (`ModelContextProtocol` + `AllToolsets`). Each project serves
   its own port: `MetaHumanTestCopy2Mac` → `127.0.0.1:8000/mcp`, `MetaHumanTestCOPY2` → `127.0.0.1:8001/mcp`
   (`Config/DefaultEditorPerProjectUserSettings.ini`, auto-start on). Full editor Python goes through a file-based
-  bridge (see the Abby repo's `tools/claude_bridge.py`).
+  bridge (`tools/ue/claude_bridge.py`, started by `tools/ue/launch_copy2.sh`).
 * **Blender:** *MCP for Blender* add-on (localhost:9876) for the live session, and headless `Blender -b` for batch jobs.
 * **GitHub:** `gh` CLI.

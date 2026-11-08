@@ -12,7 +12,7 @@ Target project: `Claude/MetaHumanTestCOPY2` (IHPC UI). Source of the functionali
 - [x] Level `Main` (COPY2): 186 segmented muscle actors (`Muscles` folder, 93 muscles × left/right), `SKELeton` static mesh actor, `BP_MH_CH_Abby8`
 - [x] Inventory of `BlenderContent/` ([docs/02](docs/02-blender-content.md)): `Skelly_Base.blend` is the source of the `SM_SM_*` muscles and has a per-bone named skeleton fitted to an Abby A-pose model
 - [x] This repo, README, TODO
-- [ ] Full system documentation ([docs/00](docs/00-system-overview.md)), kept up to date as the work lands
+- [x] Full system documentation ([docs/00](docs/00-system-overview.md))
 
 ## 1. Merge the C++ (Abby → COPY2)
 - [x] Back up every COPY2 file that gets changed (`Saved/ClaudeBackup/`)
@@ -41,12 +41,21 @@ Target project: `Claude/MetaHumanTestCOPY2` (IHPC UI). Source of the functionali
 
 ## 4. Wire everything to the IHPC UI
 - [x] Layer switcher buttons → `AnatomyView` on the possessed pawn (Abby or Beau)
-- [ ] IHPC timeline bar → `UAnimationTimelineComp` (play / pause / speed / scrub / restart / markers)
-- [~] Muscle (and bone) hover name + click info popup in the matching layer (built, testing in PIE)
-- [ ] Analysis panel "Active Muscles" list from the atlas
-- [ ] Pawn switching keeps working with the new UI
+- [x] IHPC timeline bar → `UAnimationTimelineComp` (play / pause / speed / seek verified through `UIHPCUILibrary`)
+- [x] Muscle and bone hover name + click info popup in the matching layer ([tests](docs/05-testing.md))
+- [x] Denser picking samples (6,820 muscles / 5,455 bones), radius 2 / 1.5 cm
+- [ ] Optional: analysis panel "Active Muscles" list from the atlas (still the IHPC demo data)
+- [x] Pawn switching keeps working with the new UI (Beau: layers, switcher re-sync, picking)
 
 ## 5. Verify and document
-- [ ] Play-In-Editor: every button, walk / jog / run, both characters, screenshots
-- [ ] [docs/00-system-overview.md](docs/00-system-overview.md): full system and structure
-- [ ] Mirror changed files into `project/`, push
+- [x] Play-In-Editor: layer buttons, pickers, timeline, both characters, screenshots ([docs/05](docs/05-testing.md))
+- [x] [docs/00-system-overview.md](docs/00-system-overview.md): full system and structure
+- [x] Mirror changed files into `project/`, push
+
+## 6. Next steps (not done yet)
+- [ ] Trunk muscles: the level's set has no abdominals / obliques / lats / erector spinae / serratus / intercostals / neck / face muscles
+- [ ] Triangle-accurate picking (CPU-skinned mesh ray test) instead of sample points
+- [ ] Hide or move the source `Muscles` actors, the generic `SKELeton` and the extra placed Abby in `Main`
+- [ ] Remove the stale `/Game/UEDPIE_0_Main` soft reference from `BP_MH_CH_Abby8` (inherited, Blueprint graph)
+- [ ] Bone material: one dark patch on the left femur (UV-dependent material on a Skelly UV island); a UV-free bone material would fix it
+- [ ] Perforce: the merged COPY2 files were changed outside Perforce (no `p4` CLI here); reconcile in P4V
