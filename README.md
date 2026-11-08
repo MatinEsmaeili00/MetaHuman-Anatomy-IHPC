@@ -17,6 +17,7 @@ bone is its own labelled part.
 - **Investigation (what each project has, what conflicts):** [docs/01-investigation.md](docs/01-investigation.md)
 - **What's in the BlenderContent folder:** [docs/02-blender-content.md](docs/02-blender-content.md)
 - **Merge steps (C++ + assets):** [docs/03-merge.md](docs/03-merge.md)
+- **Segmented muscles + skeleton (fitting, skinning, labels):** [docs/04-segmented-anatomy.md](docs/04-segmented-anatomy.md)
 
 ## Repo layout
 

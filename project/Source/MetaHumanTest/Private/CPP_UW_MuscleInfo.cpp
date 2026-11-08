@@ -43,28 +43,65 @@ void UCPP_UW_MuscleInfo::HandlePossessedPawnChanged(APawn* OldPawn, APawn* NewPa
 
 void UCPP_UW_MuscleInfo::BindToPawn(APawn* Pawn)
 {
-	if (IsValid(Picker))
+	for (UAnatomyPickerComp* Old : Pickers)
 	{
-		Picker->OnHoverChanged.RemoveDynamic(this, &UCPP_UW_MuscleInfo::HandleHoverChanged);
-		Picker->OnSelectionChanged.RemoveDynamic(this, &UCPP_UW_MuscleInfo::HandleSelectionChanged);
+		if (IsValid(Old))
+		{
+			Old->OnHoverChanged.RemoveDynamic(this, &UCPP_UW_MuscleInfo::HandleHoverChanged);
+			Old->OnSelectionChanged.RemoveDynamic(this, &UCPP_UW_MuscleInfo::HandleSelectionChanged);
+		}
 	}
+	Pickers.Reset();
+	Picker = nullptr;
 
-	Picker = Pawn ? Pawn->FindComponentByClass<UAnatomyPickerComp>() : nullptr;
+	TArray<UAnatomyPickerComp*> Found;
+	if (Pawn)
+	{
+		Pawn->GetComponents<UAnatomyPickerComp>(Found);
+	}
 	TooltipBox->SetVisibility(ESlateVisibility::Collapsed);
 	PopupBox->SetVisibility(ESlateVisibility::Collapsed);
 
-	if (Picker)
+	for (UAnatomyPickerComp* New : Found)
 	{
-		Picker->OnHoverChanged.AddUniqueDynamic(this, &UCPP_UW_MuscleInfo::HandleHoverChanged);
-		Picker->OnSelectionChanged.AddUniqueDynamic(this, &UCPP_UW_MuscleInfo::HandleSelectionChanged);
+		New->OnHoverChanged.AddUniqueDynamic(this, &UCPP_UW_MuscleInfo::HandleHoverChanged);
+		New->OnSelectionChanged.AddUniqueDynamic(this, &UCPP_UW_MuscleInfo::HandleSelectionChanged);
+		Pickers.Add(New);
 	}
+	Picker = Pickers.Num() > 0 ? Pickers[0].Get() : nullptr;
+}
+
+UAnatomyPickerComp* UCPP_UW_MuscleInfo::FindReporter(int32 PartId, bool bSelection) const
+{
+	if (PartId <= 0)
+	{
+		return nullptr;
+	}
+	for (UAnatomyPickerComp* Candidate : Pickers)
+	{
+		if (IsValid(Candidate) && (bSelection ? Candidate->GetSelectedMuscle() : Candidate->GetHoveredMuscle()) == PartId)
+		{
+			return Candidate;
+		}
+	}
+	return nullptr;
+}
+
+void UCPP_UW_MuscleInfo::SetPopupLine(UTextBlock* Line, const FText& Format, const FText& Value)
+{
+	if (!Line)
+	{
+		return;
+	}
+	Line->SetText(FText::Format(Format, Value));
+	Line->SetVisibility(Value.IsEmpty() ? ESlateVisibility::Collapsed : ESlateVisibility::HitTestInvisible);
 }
 
 void UCPP_UW_MuscleInfo::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
-	if (!IsValid(Picker))
+	if (Pickers.Num() == 0 || !IsValid(Pickers[0]))
 	{
 		RebindCooldown -= InDeltaTime;
 		if (RebindCooldown <= 0.f)
@@ -87,41 +124,68 @@ void UCPP_UW_MuscleInfo::NativeTick(const FGeometry& MyGeometry, float InDeltaTi
 
 void UCPP_UW_MuscleInfo::HandleHoverChanged(int32 MuscleId)
 {
+	// Several pickers report here (muscles, skeleton): show the one that is hovering something.
 	FMuscleInfo Info;
-	if (MuscleId > 0 && Picker && Picker->GetMuscleInfo(MuscleId, Info))
+	UAnatomyPickerComp* Reporter = FindReporter(MuscleId, /*bSelection*/ false);
+	if (Reporter && Reporter->GetMuscleInfo(MuscleId, Info))
 	{
+		Picker = Reporter;
 		MuscleNameText->SetText(FText::Format(NSLOCTEXT("MuscleInfo", "Tooltip", "{0} ({1})"), Info.Name, Info.Side));
 		TooltipBox->SetVisibility(ESlateVisibility::HitTestInvisible);
+		return;
 	}
-	else
+	// A picker stopped hovering: only hide the tooltip if no other picker is hovering something.
+	for (UAnatomyPickerComp* Other : Pickers)
 	{
-		TooltipBox->SetVisibility(ESlateVisibility::Collapsed);
+		if (IsValid(Other) && Other->GetHoveredMuscle() > 0)
+		{
+			return;
+		}
 	}
+	TooltipBox->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UCPP_UW_MuscleInfo::HandleSelectionChanged(int32 MuscleId)
 {
 	FMuscleInfo Info;
-	if (MuscleId > 0 && Picker && Picker->GetMuscleInfo(MuscleId, Info))
+	UAnatomyPickerComp* Reporter = FindReporter(MuscleId, /*bSelection*/ true);
+	if (Reporter && Reporter->GetMuscleInfo(MuscleId, Info))
 	{
+		Picker = Reporter;
+		// One popup at a time: a new selection in one layer clears the other layers' selection.
+		for (UAnatomyPickerComp* Other : Pickers)
+		{
+			if (IsValid(Other) && Other != Reporter && Other->GetSelectedMuscle() > 0)
+			{
+				Other->ClearSelection();
+			}
+		}
 		PopupTitle->SetText(FText::Format(NSLOCTEXT("MuscleInfo", "Title", "{0} - {1}"), Info.Name, Info.Side));
 		PopupRegion->SetText(Info.Region);
-		PopupFunction->SetText(FText::Format(NSLOCTEXT("MuscleInfo", "Function", "What it does: {0}"), Info.Function));
-		PopupRunning->SetText(FText::Format(NSLOCTEXT("MuscleInfo", "Running", "When running: {0}"), Info.Running));
-		PopupInjury->SetText(FText::Format(NSLOCTEXT("MuscleInfo", "Injury", "Watch out for: {0}"), Info.Injury));
+		SetPopupLine(PopupFunction, NSLOCTEXT("MuscleInfo", "Function", "What it does: {0}"), Info.Function);
+		SetPopupLine(PopupRunning, NSLOCTEXT("MuscleInfo", "Running", "When running: {0}"), Info.Running);
+		SetPopupLine(PopupInjury, NSLOCTEXT("MuscleInfo", "Injury", "Watch out for: {0}"), Info.Injury);
 		PopupBox->SetVisibility(ESlateVisibility::Visible);
+		return;
 	}
-	else
+	for (UAnatomyPickerComp* Other : Pickers)
 	{
-		PopupBox->SetVisibility(ESlateVisibility::Collapsed);
+		if (IsValid(Other) && Other->GetSelectedMuscle() > 0)
+		{
+			return; // another layer still has a selection
+		}
 	}
+	PopupBox->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UCPP_UW_MuscleInfo::HandleCloseClicked()
 {
-	if (Picker)
+	for (UAnatomyPickerComp* Each : Pickers)
 	{
-		Picker->ClearSelection(); // fires HandleSelectionChanged(0) -> hides the popup
+		if (IsValid(Each))
+		{
+			Each->ClearSelection(); // fires HandleSelectionChanged(0)
+		}
 	}
 	PopupBox->SetVisibility(ESlateVisibility::Collapsed);
 }

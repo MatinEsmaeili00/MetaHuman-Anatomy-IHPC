@@ -1,6 +1,6 @@
 # 03 - Probe / drive a running PIE session of COPY2 (start PIE first, e.g. with the MCP StartPIE tool).
 # ACTION is substituted before running (tools/ue/pie.sh): status | layer:body|muscles|skeleton | play | pause |
-# time:<0..1> | speed:<0..1> | switch:<+1|-1> | hudtab:<tab>
+# time:<0..1> | speed:<0..1> | switch:<+1|-1> | depth:<0..1> | cam:<yaw>,<pitch>,<length>
 import unreal
 
 ACTION = "__ACTION__"
@@ -29,6 +29,22 @@ if kind == "layer" and layer_switcher:
     layer = {"body": unreal.IHPCAnatomyLayer.BODY, "muscles": unreal.IHPCAnatomyLayer.MUSCLES,
              "skeleton": unreal.IHPCAnatomyLayer.SKELETON}[arg]
     layer_switcher.select_layer(layer)
+elif kind == "depth" and pawn:
+    # jump straight to a reveal depth (0 = skin ... 1 = skeleton), no animation
+    pawn.get_component_by_class(unreal.AnatomyViewComp).set_reveal_depth(float(arg), False)
+elif kind == "cam" and pawn:
+    # cam:<yaw>,<pitch>,<arm length>  (world yaw/pitch of the spring arm; the camera looks along it at the pawn)
+    yaw, pitch, length = (float(x) for x in arg.split(","))
+    arm = pawn.get_component_by_class(unreal.SpringArmComponent)
+    rot = unreal.Rotator(pitch, yaw, 0)
+    if arm.get_editor_property("use_pawn_control_rotation"):
+        pc.set_control_rotation(rot)
+    arm.set_world_rotation(rot, False, False)
+    arm.set_editor_property("target_arm_length", length)
+    mouse = pawn.get_component_by_class(unreal.CPP_MouseFunctionComp)
+    if mouse:
+        mouse.sync_from_current_spring_arm()
+    print("camera arm", arm.get_world_rotation(), length)
 elif kind == "switch" and pc:
     pc.switch_pawn(int(arg))
     pawn = pc.get_controlled_pawn()

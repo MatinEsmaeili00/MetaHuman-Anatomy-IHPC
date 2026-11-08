@@ -31,17 +31,18 @@ Target project: `Claude/MetaHumanTestCOPY2` (IHPC UI). Source of the functionali
 - [x] First PIE: IHPC HUD + timeline + layer switcher drive Abby's anatomy layers ([screenshot](docs/screenshots/11_merged_muscles.png))
 
 ## 3. Segmented anatomy that follows the animation
-- [ ] Export Abby's body (MetaHuman skeleton + weights) and the segmented muscles / skeleton to Blender
-- [ ] Fit the anatomy to Abby's reference pose
-- [ ] Muscles: skin to Abby's skeleton (weights transferred from her body), one ID per muscle
-- [ ] Skeleton: each bone piece rigidly bound to one MetaHuman bone, one ID per bone
-- [ ] Import as skeletal meshes with MetaHuman bone names (Leader Pose on `Body`, like the face)
-- [ ] Atlas data: readable name, side, group and info text for every muscle and bone (labels for hover / click)
+- [x] Measure: the level's muscle set sits on Abby's reference pose 1 m to her side (pivot 320, 80, 0) ([fit](docs/screenshots/12_fit_level_muscles_in_abby.png))
+- [x] Skeleton: Skelly_Base fitted to Abby in Blender (global 7.53× fit + per-segment joint fit, 200 named parts) ([docs/04](docs/04-segmented-anatomy.md))
+- [x] Muscles: 186 parts skinned with weights transferred from Abby's body, one ID per muscle (Geometry Script, exact bind pose)
+- [x] Skeleton: each bone rigidly bound to one MetaHuman bone, one ID per bone
+- [x] Skeletal meshes on a plugin copy of Abby's skeleton, wired into Abby + Beau (Leader Pose on `Body`)
+- [x] Atlases: 186 muscles + 200 bones with name, side, region, function / running / injury text, picking samples
+- [x] Second picker (`BonePicker`) for the skeleton layer; controller + muscle-info widget handle several pickers (C++ rebuilt)
 
 ## 4. Wire everything to the IHPC UI
 - [x] Layer switcher buttons → `AnatomyView` on the possessed pawn (Abby or Beau)
 - [ ] IHPC timeline bar → `UAnimationTimelineComp` (play / pause / speed / scrub / restart / markers)
-- [ ] Muscle (and bone) hover name + click info popup in the matching layer
+- [~] Muscle (and bone) hover name + click info popup in the matching layer (built, testing in PIE)
 - [ ] Analysis panel "Active Muscles" list from the atlas
 - [ ] Pawn switching keeps working with the new UI
 

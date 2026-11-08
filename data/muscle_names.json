@@ -1,0 +1,746 @@
+{
+ "SM_SM_Abductorpollicislongusr": {
+  "kind": "muscle",
+  "name": "Abductor pollicis longus"
+ },
+ "SM_SM_Abductorpollicislongusr001": {
+  "kind": "muscle",
+  "name": "Abductor pollicis longus"
+ },
+ "SM_SM_Adductorbrevismr": {
+  "kind": "muscle",
+  "name": "Adductor brevis"
+ },
+ "SM_SM_Adductorbrevismr001": {
+  "kind": "muscle",
+  "name": "Adductor brevis"
+ },
+ "SM_SM_Adductorlongusmr": {
+  "kind": "muscle",
+  "name": "Adductor longus"
+ },
+ "SM_SM_Adductorlongusmr001": {
+  "kind": "muscle",
+  "name": "Adductor longus"
+ },
+ "SM_SM_Adductormagnus_minimusmr": {
+  "kind": "muscle",
+  "name": "Adductor magnus & minimus"
+ },
+ "SM_SM_Adductormagnus_minimusmr001": {
+  "kind": "muscle",
+  "name": "Adductor magnus & minimus"
+ },
+ "SM_SM_Anconeusr": {
+  "kind": "muscle",
+  "name": "Anconeus"
+ },
+ "SM_SM_Anconeusr001": {
+  "kind": "muscle",
+  "name": "Anconeus"
+ },
+ "SM_SM_Anteriorcruciateligamentl": {
+  "kind": "ligament",
+  "name": "Anterior cruciate ligament"
+ },
+ "SM_SM_Anteriorcruciateligamentl001": {
+  "kind": "ligament",
+  "name": "Anterior cruciate ligament"
+ },
+ "SM_SM_Articularisgenusmr": {
+  "kind": "muscle",
+  "name": "Articularis genus"
+ },
+ "SM_SM_Articularisgenusmr001": {
+  "kind": "muscle",
+  "name": "Articularis genus"
+ },
+ "SM_SM_Bicepsbrachiir": {
+  "kind": "muscle",
+  "name": "Biceps brachii"
+ },
+ "SM_SM_Bicepsbrachiir001": {
+  "kind": "muscle",
+  "name": "Biceps brachii"
+ },
+ "SM_SM_Bicepsfemorismlongheadr": {
+  "kind": "muscle",
+  "name": "Biceps femoris (long head)"
+ },
+ "SM_SM_Bicepsfemorismlongheadr001": {
+  "kind": "muscle",
+  "name": "Biceps femoris (long head)"
+ },
+ "SM_SM_Bicepsfemorismshortheadr": {
+  "kind": "muscle",
+  "name": "Biceps femoris (short head)"
+ },
+ "SM_SM_Bicepsfemorismshortheadr001": {
+  "kind": "muscle",
+  "name": "Biceps femoris (short head)"
+ },
+ "SM_SM_Brachialisr": {
+  "kind": "muscle",
+  "name": "Brachialis"
+ },
+ "SM_SM_Brachialisr001": {
+  "kind": "muscle",
+  "name": "Brachialis"
+ },
+ "SM_SM_Brachioradialisr": {
+  "kind": "muscle",
+  "name": "Brachioradialis"
+ },
+ "SM_SM_Brachioradialisr001": {
+  "kind": "muscle",
+  "name": "Brachioradialis"
+ },
+ "SM_SM_Coracobrachialisr": {
+  "kind": "muscle",
+  "name": "Coracobrachialis"
+ },
+ "SM_SM_Coracobrachialisr001": {
+  "kind": "muscle",
+  "name": "Coracobrachialis"
+ },
+ "SM_SM_Deltoidr": {
+  "kind": "muscle",
+  "name": "Deltoid (middle)"
+ },
+ "SM_SM_Deltoidr001": {
+  "kind": "muscle",
+  "name": "Deltoid (middle)"
+ },
+ "SM_SM_Extensorcarpiradialisbrevisr": {
+  "kind": "muscle",
+  "name": "Extensor carpi radialis brevis"
+ },
+ "SM_SM_Extensorcarpiradialisbrevisr001": {
+  "kind": "muscle",
+  "name": "Extensor carpi radialis brevis"
+ },
+ "SM_SM_Extensorcarpiradialislongusr": {
+  "kind": "muscle",
+  "name": "Extensor carpi radialis longus"
+ },
+ "SM_SM_Extensorcarpiradialislongusr001": {
+  "kind": "muscle",
+  "name": "Extensor carpi radialis longus"
+ },
+ "SM_SM_Extensorcarpiulnarisr": {
+  "kind": "muscle",
+  "name": "Extensor carpi ulnaris"
+ },
+ "SM_SM_Extensorcarpiulnarisr001": {
+  "kind": "muscle",
+  "name": "Extensor carpi ulnaris"
+ },
+ "SM_SM_Extensordigitiminimir": {
+  "kind": "muscle",
+  "name": "Extensor digiti minimi"
+ },
+ "SM_SM_Extensordigitiminimir001": {
+  "kind": "muscle",
+  "name": "Extensor digiti minimi"
+ },
+ "SM_SM_Extensordigitorumlongusr": {
+  "kind": "muscle",
+  "name": "Extensor digitorum longus"
+ },
+ "SM_SM_Extensordigitorumlongusr001": {
+  "kind": "muscle",
+  "name": "Extensor digitorum longus"
+ },
+ "SM_SM_Extensordigitorumr": {
+  "kind": "muscle",
+  "name": "Extensor digitorum"
+ },
+ "SM_SM_Extensordigitorumr001": {
+  "kind": "muscle",
+  "name": "Extensor digitorum"
+ },
+ "SM_SM_Extensorhallicuslongusr": {
+  "kind": "muscle",
+  "name": "Extensor hallucis longus"
+ },
+ "SM_SM_Extensorhallicuslongusr001": {
+  "kind": "muscle",
+  "name": "Extensor hallucis longus"
+ },
+ "SM_SM_Extensorindicisr": {
+  "kind": "muscle",
+  "name": "Extensor indicis"
+ },
+ "SM_SM_Extensorindicisr001": {
+  "kind": "muscle",
+  "name": "Extensor indicis"
+ },
+ "SM_SM_Extensorpoliicislongusr": {
+  "kind": "muscle",
+  "name": "Extensor pollicis longus"
+ },
+ "SM_SM_Extensorpoliicislongusr001": {
+  "kind": "muscle",
+  "name": "Extensor pollicis longus"
+ },
+ "SM_SM_Extensorpollicisr": {
+  "kind": "muscle",
+  "name": "Extensor pollicis brevis"
+ },
+ "SM_SM_Extensorpollicisr001": {
+  "kind": "muscle",
+  "name": "Extensor pollicis brevis"
+ },
+ "SM_SM_Fibularisbrevisr": {
+  "kind": "muscle",
+  "name": "Fibularis brevis"
+ },
+ "SM_SM_Fibularisbrevisr001": {
+  "kind": "muscle",
+  "name": "Fibularis brevis"
+ },
+ "SM_SM_Fibularislongusr": {
+  "kind": "muscle",
+  "name": "Fibularis longus"
+ },
+ "SM_SM_Fibularislongusr001": {
+  "kind": "muscle",
+  "name": "Fibularis longus"
+ },
+ "SM_SM_Fibularistertiusr": {
+  "kind": "muscle",
+  "name": "Fibularis tertius"
+ },
+ "SM_SM_Fibularistertiusr001": {
+  "kind": "muscle",
+  "name": "Fibularis tertius"
+ },
+ "SM_SM_Flexorcarpiradialisr": {
+  "kind": "muscle",
+  "name": "Flexor carpi radialis"
+ },
+ "SM_SM_Flexorcarpiradialisr001": {
+  "kind": "muscle",
+  "name": "Flexor carpi radialis"
+ },
+ "SM_SM_Flexorcarpiulnarisr": {
+  "kind": "muscle",
+  "name": "Flexor carpi ulnaris"
+ },
+ "SM_SM_Flexorcarpiulnarisr001": {
+  "kind": "muscle",
+  "name": "Flexor carpi ulnaris"
+ },
+ "SM_SM_Flexordigitorumlonguspedisr": {
+  "kind": "muscle",
+  "name": "Flexor digitorum longus"
+ },
+ "SM_SM_Flexordigitorumlonguspedisr001": {
+  "kind": "muscle",
+  "name": "Flexor digitorum longus"
+ },
+ "SM_SM_Flexordigitorumprofundusr": {
+  "kind": "muscle",
+  "name": "Flexor digitorum profundus"
+ },
+ "SM_SM_Flexordigitorumprofundusr001": {
+  "kind": "muscle",
+  "name": "Flexor digitorum profundus"
+ },
+ "SM_SM_Flexordigitorumsuperficialisr": {
+  "kind": "muscle",
+  "name": "Flexor digitorum superficialis"
+ },
+ "SM_SM_Flexordigitorumsuperficialisr001": {
+  "kind": "muscle",
+  "name": "Flexor digitorum superficialis"
+ },
+ "SM_SM_Flexorhallucislongusr": {
+  "kind": "muscle",
+  "name": "Flexor hallucis longus"
+ },
+ "SM_SM_Flexorhallucislongusr001": {
+  "kind": "muscle",
+  "name": "Flexor hallucis longus"
+ },
+ "SM_SM_Flexorpollicislongusr": {
+  "kind": "muscle",
+  "name": "Flexor pollicis longus"
+ },
+ "SM_SM_Flexorpollicislongusr001": {
+  "kind": "muscle",
+  "name": "Flexor pollicis longus"
+ },
+ "SM_SM_Frontdeltoidr": {
+  "kind": "muscle",
+  "name": "Deltoid (anterior)"
+ },
+ "SM_SM_Frontdeltoidr001": {
+  "kind": "muscle",
+  "name": "Deltoid (anterior)"
+ },
+ "SM_SM_Gastrocnemiusr": {
+  "kind": "muscle",
+  "name": "Gastrocnemius"
+ },
+ "SM_SM_Gastrocnemiusr001": {
+  "kind": "muscle",
+  "name": "Gastrocnemius"
+ },
+ "SM_SM_Gluteusmaximusr": {
+  "kind": "muscle",
+  "name": "Gluteus maximus"
+ },
+ "SM_SM_Gluteusmaximusr001": {
+  "kind": "muscle",
+  "name": "Gluteus maximus"
+ },
+ "SM_SM_Gluteusmediusr": {
+  "kind": "muscle",
+  "name": "Gluteus medius"
+ },
+ "SM_SM_Gluteusmediusr001": {
+  "kind": "muscle",
+  "name": "Gluteus medius"
+ },
+ "SM_SM_Gluteusminimusr": {
+  "kind": "muscle",
+  "name": "Gluteus minimus"
+ },
+ "SM_SM_Gluteusminimusr001": {
+  "kind": "muscle",
+  "name": "Gluteus minimus"
+ },
+ "SM_SM_Gracilismr": {
+  "kind": "muscle",
+  "name": "Gracilis"
+ },
+ "SM_SM_Gracilismr001": {
+  "kind": "muscle",
+  "name": "Gracilis"
+ },
+ "SM_SM_Iliacusr": {
+  "kind": "muscle",
+  "name": "Iliacus"
+ },
+ "SM_SM_Iliacusr001": {
+  "kind": "muscle",
+  "name": "Iliacus"
+ },
+ "SM_SM_Iliotibialtract_notmuscle_r": {
+  "kind": "fascia",
+  "name": "Iliotibial tract"
+ },
+ "SM_SM_Iliotibialtract_notmuscle_r001": {
+  "kind": "fascia",
+  "name": "Iliotibial tract"
+ },
+ "SM_SM_Inferiorgemellusr": {
+  "kind": "muscle",
+  "name": "Inferior gemellus"
+ },
+ "SM_SM_Inferiorgemellusr001": {
+  "kind": "muscle",
+  "name": "Inferior gemellus"
+ },
+ "SM_SM_Infraspinatusr": {
+  "kind": "muscle",
+  "name": "Infraspinatus"
+ },
+ "SM_SM_Infraspinatusr001": {
+  "kind": "muscle",
+  "name": "Infraspinatus"
+ },
+ "SM_SM_Interosseousmembrane": {
+  "kind": "fascia",
+  "name": "Interosseous membrane"
+ },
+ "SM_SM_Interosseousmembrane001": {
+  "kind": "fascia",
+  "name": "Interosseous membrane"
+ },
+ "SM_SM_Lateralcollateralligamentl": {
+  "kind": "ligament",
+  "name": "Lateral collateral ligament"
+ },
+ "SM_SM_Lateralcollateralligamentl001": {
+  "kind": "ligament",
+  "name": "Lateral collateral ligament"
+ },
+ "SM_SM_Lateralpatellofemoralligamentl": {
+  "kind": "ligament",
+  "name": "Lateral patellofemoral ligament"
+ },
+ "SM_SM_Lateralpatellofemoralligamentl001": {
+  "kind": "ligament",
+  "name": "Lateral patellofemoral ligament"
+ },
+ "SM_SM_Lateralpatellotibialligamentl": {
+  "kind": "ligament",
+  "name": "Lateral patellotibial ligament"
+ },
+ "SM_SM_Lateralpatellotibialligamentl001": {
+  "kind": "ligament",
+  "name": "Lateral patellotibial ligament"
+ },
+ "SM_SM_Lowertrapeziusr": {
+  "kind": "muscle",
+  "name": "Trapezius (lower)"
+ },
+ "SM_SM_Lowertrapeziusr001": {
+  "kind": "muscle",
+  "name": "Trapezius (lower)"
+ },
+ "SM_SM_Medialcollateralligamentl": {
+  "kind": "ligament",
+  "name": "Medial collateral ligament"
+ },
+ "SM_SM_Medialcollateralligamentl001": {
+  "kind": "ligament",
+  "name": "Medial collateral ligament"
+ },
+ "SM_SM_Medialpatellofemoralligamentl": {
+  "kind": "ligament",
+  "name": "Medial patellofemoral ligament"
+ },
+ "SM_SM_Medialpatellofemoralligamentl001": {
+  "kind": "ligament",
+  "name": "Medial patellofemoral ligament"
+ },
+ "SM_SM_Medialpatellotibialligamentl": {
+  "kind": "ligament",
+  "name": "Medial patellotibial ligament"
+ },
+ "SM_SM_Medialpatellotibialligamentl001": {
+  "kind": "ligament",
+  "name": "Medial patellotibial ligament"
+ },
+ "SM_SM_Middletrapeziusr": {
+  "kind": "muscle",
+  "name": "Trapezius (middle)"
+ },
+ "SM_SM_Middletrapeziusr001": {
+  "kind": "muscle",
+  "name": "Trapezius (middle)"
+ },
+ "SM_SM_Obturatorexternusr": {
+  "kind": "muscle",
+  "name": "Obturator externus"
+ },
+ "SM_SM_Obturatorexternusr001": {
+  "kind": "muscle",
+  "name": "Obturator externus"
+ },
+ "SM_SM_Obturatorinternusr": {
+  "kind": "muscle",
+  "name": "Obturator internus"
+ },
+ "SM_SM_Obturatorinternusr001": {
+  "kind": "muscle",
+  "name": "Obturator internus"
+ },
+ "SM_SM_Palmarislongusr": {
+  "kind": "muscle",
+  "name": "Palmaris longus"
+ },
+ "SM_SM_Palmarislongusr001": {
+  "kind": "muscle",
+  "name": "Palmaris longus"
+ },
+ "SM_SM_Patellartendonligamentl": {
+  "kind": "ligament",
+  "name": "Patellar ligament"
+ },
+ "SM_SM_Patellartendonligamentl001": {
+  "kind": "ligament",
+  "name": "Patellar ligament"
+ },
+ "SM_SM_Pectineusr": {
+  "kind": "muscle",
+  "name": "Pectineus"
+ },
+ "SM_SM_Pectineusr001": {
+  "kind": "muscle",
+  "name": "Pectineus"
+ },
+ "SM_SM_Pectoralismajorr": {
+  "kind": "muscle",
+  "name": "Pectoralis major"
+ },
+ "SM_SM_Pectoralismajorr001": {
+  "kind": "muscle",
+  "name": "Pectoralis major"
+ },
+ "SM_SM_Pectoralisminorr": {
+  "kind": "muscle",
+  "name": "Pectoralis minor"
+ },
+ "SM_SM_Pectoralisminorr001": {
+  "kind": "muscle",
+  "name": "Pectoralis minor"
+ },
+ "SM_SM_Piriformusr": {
+  "kind": "muscle",
+  "name": "Piriformis"
+ },
+ "SM_SM_Piriformusr001": {
+  "kind": "muscle",
+  "name": "Piriformis"
+ },
+ "SM_SM_Plantarisr": {
+  "kind": "muscle",
+  "name": "Plantaris"
+ },
+ "SM_SM_Plantarisr001": {
+  "kind": "muscle",
+  "name": "Plantaris"
+ },
+ "SM_SM_Popliteusr": {
+  "kind": "muscle",
+  "name": "Popliteus"
+ },
+ "SM_SM_Popliteusr001": {
+  "kind": "muscle",
+  "name": "Popliteus"
+ },
+ "SM_SM_Posteriorcruciateligamentl": {
+  "kind": "ligament",
+  "name": "Posterior cruciate ligament"
+ },
+ "SM_SM_Posteriorcruciateligamentl001": {
+  "kind": "ligament",
+  "name": "Posterior cruciate ligament"
+ },
+ "SM_SM_Pronatorquadratusr": {
+  "kind": "muscle",
+  "name": "Pronator quadratus"
+ },
+ "SM_SM_Pronatorquadratusr001": {
+  "kind": "muscle",
+  "name": "Pronator quadratus"
+ },
+ "SM_SM_Pronatorteresr": {
+  "kind": "muscle",
+  "name": "Pronator teres"
+ },
+ "SM_SM_Pronatorteresr001": {
+  "kind": "muscle",
+  "name": "Pronator teres"
+ },
+ "SM_SM_Psoasmajorr": {
+  "kind": "muscle",
+  "name": "Psoas major"
+ },
+ "SM_SM_Psoasmajorr001": {
+  "kind": "muscle",
+  "name": "Psoas major"
+ },
+ "SM_SM_Quadratusfemorisr": {
+  "kind": "muscle",
+  "name": "Quadratus femoris"
+ },
+ "SM_SM_Quadratusfemorisr001": {
+  "kind": "muscle",
+  "name": "Quadratus femoris"
+ },
+ "SM_SM_Quadricepstendonl": {
+  "kind": "tendon",
+  "name": "Quadriceps tendon"
+ },
+ "SM_SM_Quadricepstendonl001": {
+  "kind": "tendon",
+  "name": "Quadriceps tendon"
+ },
+ "SM_SM_Reardeltoidr": {
+  "kind": "muscle",
+  "name": "Deltoid (posterior)"
+ },
+ "SM_SM_Reardeltoidr001": {
+  "kind": "muscle",
+  "name": "Deltoid (posterior)"
+ },
+ "SM_SM_Rectusfemoriar": {
+  "kind": "muscle",
+  "name": "Rectus femoris"
+ },
+ "SM_SM_Rectusfemoriar001": {
+  "kind": "muscle",
+  "name": "Rectus femoris"
+ },
+ "SM_SM_Rhomboidmajorr": {
+  "kind": "muscle",
+  "name": "Rhomboid major"
+ },
+ "SM_SM_Rhomboidmajorr001": {
+  "kind": "muscle",
+  "name": "Rhomboid major"
+ },
+ "SM_SM_Rhomboidminorr": {
+  "kind": "muscle",
+  "name": "Rhomboid minor"
+ },
+ "SM_SM_Rhomboidminorr001": {
+  "kind": "muscle",
+  "name": "Rhomboid minor"
+ },
+ "SM_SM_Sartoriusmr": {
+  "kind": "muscle",
+  "name": "Sartorius"
+ },
+ "SM_SM_Sartoriusmr001": {
+  "kind": "muscle",
+  "name": "Sartorius"
+ },
+ "SM_SM_Semimembranosusmuscler": {
+  "kind": "muscle",
+  "name": "Semimembranosus"
+ },
+ "SM_SM_Semimembranosusmuscler001": {
+  "kind": "muscle",
+  "name": "Semimembranosus"
+ },
+ "SM_SM_Semitendinosusmr": {
+  "kind": "muscle",
+  "name": "Semitendinosus"
+ },
+ "SM_SM_Semitendinosusmr001": {
+  "kind": "muscle",
+  "name": "Semitendinosus"
+ },
+ "SM_SM_Soleusr": {
+  "kind": "muscle",
+  "name": "Soleus"
+ },
+ "SM_SM_Soleusr001": {
+  "kind": "muscle",
+  "name": "Soleus"
+ },
+ "SM_SM_Subscapularisr": {
+  "kind": "muscle",
+  "name": "Subscapularis"
+ },
+ "SM_SM_Subscapularisr001": {
+  "kind": "muscle",
+  "name": "Subscapularis"
+ },
+ "SM_SM_Superiorgemellusr": {
+  "kind": "muscle",
+  "name": "Superior gemellus"
+ },
+ "SM_SM_Superiorgemellusr001": {
+  "kind": "muscle",
+  "name": "Superior gemellus"
+ },
+ "SM_SM_Supinatordeepheadr": {
+  "kind": "muscle",
+  "name": "Supinator (deep head)"
+ },
+ "SM_SM_Supinatordeepheadr001": {
+  "kind": "muscle",
+  "name": "Supinator (deep head)"
+ },
+ "SM_SM_Supinatorr": {
+  "kind": "muscle",
+  "name": "Supinator"
+ },
+ "SM_SM_Supinatorr001": {
+  "kind": "muscle",
+  "name": "Supinator"
+ },
+ "SM_SM_Suprespinatusr": {
+  "kind": "muscle",
+  "name": "Supraspinatus"
+ },
+ "SM_SM_Suprespinatusr001": {
+  "kind": "muscle",
+  "name": "Supraspinatus"
+ },
+ "SM_SM_Tensorfasciaelataer": {
+  "kind": "muscle",
+  "name": "Tensor fasciae latae"
+ },
+ "SM_SM_Tensorfasciaelataer001": {
+  "kind": "muscle",
+  "name": "Tensor fasciae latae"
+ },
+ "SM_SM_Teresmajorr": {
+  "kind": "muscle",
+  "name": "Teres major"
+ },
+ "SM_SM_Teresmajorr001": {
+  "kind": "muscle",
+  "name": "Teres major"
+ },
+ "SM_SM_Teresminorr": {
+  "kind": "muscle",
+  "name": "Teres minor"
+ },
+ "SM_SM_Teresminorr001": {
+  "kind": "muscle",
+  "name": "Teres minor"
+ },
+ "SM_SM_Tibialisanteriorr": {
+  "kind": "muscle",
+  "name": "Tibialis anterior"
+ },
+ "SM_SM_Tibialisanteriorr001": {
+  "kind": "muscle",
+  "name": "Tibialis anterior"
+ },
+ "SM_SM_Tibialisposteriorr": {
+  "kind": "muscle",
+  "name": "Tibialis posterior"
+ },
+ "SM_SM_Tibialisposteriorr001": {
+  "kind": "muscle",
+  "name": "Tibialis posterior"
+ },
+ "SM_SM_Tricepsbrachiimedialheadr": {
+  "kind": "muscle",
+  "name": "Triceps brachii (medial head)"
+ },
+ "SM_SM_Tricepsbrachiimedialheadr001": {
+  "kind": "muscle",
+  "name": "Triceps brachii (medial head)"
+ },
+ "SM_SM_Tricepsbrachiir": {
+  "kind": "muscle",
+  "name": "Triceps brachii"
+ },
+ "SM_SM_Tricepsbrachiir001": {
+  "kind": "muscle",
+  "name": "Triceps brachii"
+ },
+ "SM_SM_Uppertrapeziusr": {
+  "kind": "muscle",
+  "name": "Trapezius (upper)"
+ },
+ "SM_SM_Uppertrapeziusr001": {
+  "kind": "muscle",
+  "name": "Trapezius (upper)"
+ },
+ "SM_SM_Vastusintermediusmr": {
+  "kind": "muscle",
+  "name": "Vastus intermedius"
+ },
+ "SM_SM_Vastusintermediusmr001": {
+  "kind": "muscle",
+  "name": "Vastus intermedius"
+ },
+ "SM_SM_Vastuslateralismr": {
+  "kind": "muscle",
+  "name": "Vastus lateralis"
+ },
+ "SM_SM_Vastuslateralismr001": {
+  "kind": "muscle",
+  "name": "Vastus lateralis"
+ },
+ "SM_SM_Vastusmedialismr": {
+  "kind": "muscle",
+  "name": "Vastus medialis"
+ },
+ "SM_SM_Vastusmedialismr001": {
+  "kind": "muscle",
+  "name": "Vastus medialis"
+ }
+}

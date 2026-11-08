@@ -17,8 +17,17 @@ class METAHUMANTEST_API UCPP_MouseFunctionComp : public UActorComponent
 public:
 	UCPP_MouseFunctionComp();
 
+	/** Rotate the camera around the character by a mouse delta (pixels). Callable from Blueprint / Python
+	 *  (scripted camera moves, screenshots), the controller calls it while the right button is held. */
+	UFUNCTION(BlueprintCallable, Category="Mouse")
 	void OrbitFromMouse(const FVector2D& MouseDelta);
+
+	/** Move the camera closer (+) / farther (-) by scroll steps. */
+	UFUNCTION(BlueprintCallable, Category="Mouse")
 	void ZoomCamera(float AxisValue);
+
+	/** Slide the camera target by a mouse delta (pixels). */
+	UFUNCTION(BlueprintCallable, Category="Mouse")
 	void PanFromMouse(const FVector2D& MouseDelta);
 
 	/** Re-read the spring arm's current rotation / length (call after moving it from somewhere else). */

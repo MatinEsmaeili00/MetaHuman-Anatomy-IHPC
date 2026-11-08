@@ -1,0 +1,2012 @@
+{
+ "global_fit": {
+  "scale": 7.528566861646174,
+  "t": [
+   3.0382643672055565e-06,
+   -0.2573716640472412,
+   -14.309646606445312
+  ]
+ },
+ "parts": [
+  {
+   "id": 1,
+   "key": "Thyroid",
+   "name": "Thyroid cartilage",
+   "side": "Centre",
+   "region": "Neck",
+   "bone": "neck_01",
+   "segment": "torso",
+   "verts": 595
+  },
+  {
+   "id": 2,
+   "key": "EthmoidSinus",
+   "name": "Ethmoid bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 18098
+  },
+  {
+   "id": 3,
+   "key": "Frontal",
+   "name": "Frontal bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 2948
+  },
+  {
+   "id": 4,
+   "key": "Lacrimal",
+   "name": "Lacrimal bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 268
+  },
+  {
+   "id": 5,
+   "key": "Mandible",
+   "name": "Mandible (jaw)",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 1371
+  },
+  {
+   "id": 6,
+   "key": "Maxilla",
+   "name": "Maxilla",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 9486
+  },
+  {
+   "id": 7,
+   "key": "Nasal",
+   "name": "Nasal bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 108
+  },
+  {
+   "id": 8,
+   "key": "Occipital",
+   "name": "Occipital bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 1934
+  },
+  {
+   "id": 9,
+   "key": "Parietal",
+   "name": "Parietal bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 1074
+  },
+  {
+   "id": 10,
+   "key": "Sphenoid",
+   "name": "Sphenoid bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 4160
+  },
+  {
+   "id": 11,
+   "key": "Temporal",
+   "name": "Temporal bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 10888
+  },
+  {
+   "id": 12,
+   "key": "Vomer",
+   "name": "Vomer",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 130
+  },
+  {
+   "id": 13,
+   "key": "Zygomatic",
+   "name": "Zygomatic bone",
+   "side": "Centre",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 2482
+  },
+  {
+   "id": 14,
+   "key": "Incus.l",
+   "name": "Incus (ear)",
+   "side": "Left",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 223
+  },
+  {
+   "id": 15,
+   "key": "Incus.r",
+   "name": "Incus (ear)",
+   "side": "Right",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 223
+  },
+  {
+   "id": 16,
+   "key": "Malleus.l",
+   "name": "Malleus (ear)",
+   "side": "Left",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 800
+  },
+  {
+   "id": 17,
+   "key": "Malleus.r",
+   "name": "Malleus (ear)",
+   "side": "Right",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 800
+  },
+  {
+   "id": 18,
+   "key": "Stapes.l",
+   "name": "Stapes (ear)",
+   "side": "Left",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 1203
+  },
+  {
+   "id": 19,
+   "key": "Stapes.r",
+   "name": "Stapes (ear)",
+   "side": "Right",
+   "region": "Skull",
+   "bone": "head",
+   "segment": "torso",
+   "verts": 1203
+  },
+  {
+   "id": 20,
+   "key": "C3",
+   "name": "C3 vertebra",
+   "side": "Centre",
+   "region": "Cervical spine (neck)",
+   "bone": "neck_02",
+   "segment": "torso",
+   "verts": 2058
+  },
+  {
+   "id": 21,
+   "key": "C4",
+   "name": "C4 vertebra",
+   "side": "Centre",
+   "region": "Cervical spine (neck)",
+   "bone": "neck_01",
+   "segment": "torso",
+   "verts": 1802
+  },
+  {
+   "id": 22,
+   "key": "C5",
+   "name": "C5 vertebra",
+   "side": "Centre",
+   "region": "Cervical spine (neck)",
+   "bone": "neck_01",
+   "segment": "torso",
+   "verts": 2976
+  },
+  {
+   "id": 23,
+   "key": "C6",
+   "name": "C6 vertebra",
+   "side": "Centre",
+   "region": "Cervical spine (neck)",
+   "bone": "neck_01",
+   "segment": "torso",
+   "verts": 2226
+  },
+  {
+   "id": 24,
+   "key": "C7",
+   "name": "C7 vertebra",
+   "side": "Centre",
+   "region": "Cervical spine (neck)",
+   "bone": "neck_01",
+   "segment": "torso",
+   "verts": 2074
+  },
+  {
+   "id": 25,
+   "key": "Atlas",
+   "name": "Atlas (C1)",
+   "side": "Centre",
+   "region": "Cervical spine (neck)",
+   "bone": "neck_02",
+   "segment": "torso",
+   "verts": 2838
+  },
+  {
+   "id": 26,
+   "key": "Axis",
+   "name": "Axis (C2)",
+   "side": "Centre",
+   "region": "Cervical spine (neck)",
+   "bone": "neck_02",
+   "segment": "torso",
+   "verts": 2308
+  },
+  {
+   "id": 27,
+   "key": "T1",
+   "name": "T1 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 1758
+  },
+  {
+   "id": 28,
+   "key": "T3",
+   "name": "T3 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 1648
+  },
+  {
+   "id": 29,
+   "key": "T4",
+   "name": "T4 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 1814
+  },
+  {
+   "id": 30,
+   "key": "T5",
+   "name": "T5 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 1867
+  },
+  {
+   "id": 31,
+   "key": "T6",
+   "name": "T6 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 2305
+  },
+  {
+   "id": 32,
+   "key": "T12",
+   "name": "T12 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 1981
+  },
+  {
+   "id": 33,
+   "key": "T2",
+   "name": "T2 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 1876
+  },
+  {
+   "id": 34,
+   "key": "T7",
+   "name": "T7 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 1872
+  },
+  {
+   "id": 35,
+   "key": "T8",
+   "name": "T8 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 1886
+  },
+  {
+   "id": 36,
+   "key": "T9",
+   "name": "T9 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 1892
+  },
+  {
+   "id": 37,
+   "key": "T10",
+   "name": "T10 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 1974
+  },
+  {
+   "id": 38,
+   "key": "T11",
+   "name": "T11 vertebra",
+   "side": "Centre",
+   "region": "Thoracic spine",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 2076
+  },
+  {
+   "id": 39,
+   "key": "L1",
+   "name": "L1 vertebra",
+   "side": "Centre",
+   "region": "Lumbar spine",
+   "bone": "spine_02",
+   "segment": "torso",
+   "verts": 1964
+  },
+  {
+   "id": 40,
+   "key": "L4",
+   "name": "L4 vertebra",
+   "side": "Centre",
+   "region": "Lumbar spine",
+   "bone": "spine_01",
+   "segment": "torso",
+   "verts": 2041
+  },
+  {
+   "id": 41,
+   "key": "L2",
+   "name": "L2 vertebra",
+   "side": "Centre",
+   "region": "Lumbar spine",
+   "bone": "spine_02",
+   "segment": "torso",
+   "verts": 2804
+  },
+  {
+   "id": 42,
+   "key": "L3",
+   "name": "L3 vertebra",
+   "side": "Centre",
+   "region": "Lumbar spine",
+   "bone": "spine_01",
+   "segment": "torso",
+   "verts": 2112
+  },
+  {
+   "id": 43,
+   "key": "L5",
+   "name": "L5 vertebra",
+   "side": "Centre",
+   "region": "Lumbar spine",
+   "bone": "spine_01",
+   "segment": "torso",
+   "verts": 1940
+  },
+  {
+   "id": 44,
+   "key": "Coccyx",
+   "name": "Coccyx",
+   "side": "Centre",
+   "region": "Pelvis",
+   "bone": "pelvis",
+   "segment": "torso",
+   "verts": 996
+  },
+  {
+   "id": 45,
+   "key": "Pelvis",
+   "name": "Hip bone (pelvis)",
+   "side": "Centre",
+   "region": "Pelvis",
+   "bone": "pelvis",
+   "segment": "torso",
+   "verts": 4082
+  },
+  {
+   "id": 46,
+   "key": "Sacrum",
+   "name": "Sacrum",
+   "side": "Centre",
+   "region": "Pelvis",
+   "bone": "pelvis",
+   "segment": "torso",
+   "verts": 4995
+  },
+  {
+   "id": 47,
+   "key": "FalseRib1.l",
+   "name": "Rib 8 (false rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 395
+  },
+  {
+   "id": 48,
+   "key": "FalseRib1.r",
+   "name": "Rib 8 (false rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 395
+  },
+  {
+   "id": 49,
+   "key": "FalseRib2.l",
+   "name": "Rib 9 (false rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 258
+  },
+  {
+   "id": 50,
+   "key": "FalseRib2.r",
+   "name": "Rib 9 (false rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 258
+  },
+  {
+   "id": 51,
+   "key": "FalseRib3.l",
+   "name": "Rib 10 (false rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 235
+  },
+  {
+   "id": 52,
+   "key": "FalseRib3.r",
+   "name": "Rib 10 (false rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 235
+  },
+  {
+   "id": 53,
+   "key": "FloatingRib1.l",
+   "name": "Rib 11 (floating rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 337
+  },
+  {
+   "id": 54,
+   "key": "FloatingRib1.r",
+   "name": "Rib 11 (floating rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 337
+  },
+  {
+   "id": 55,
+   "key": "FloatingRib2.l",
+   "name": "Rib 12 (floating rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 128
+  },
+  {
+   "id": 56,
+   "key": "FloatingRib2.r",
+   "name": "Rib 12 (floating rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_03",
+   "segment": "torso",
+   "verts": 128
+  },
+  {
+   "id": 57,
+   "key": "TrueRib1.l",
+   "name": "Rib 1 (true rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 312
+  },
+  {
+   "id": 58,
+   "key": "TrueRib1.r",
+   "name": "Rib 1 (true rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 312
+  },
+  {
+   "id": 59,
+   "key": "TrueRib2.l",
+   "name": "Rib 2 (true rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 231
+  },
+  {
+   "id": 60,
+   "key": "TrueRib2.r",
+   "name": "Rib 2 (true rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 231
+  },
+  {
+   "id": 61,
+   "key": "TrueRib3.l",
+   "name": "Rib 3 (true rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 375
+  },
+  {
+   "id": 62,
+   "key": "TrueRib3.r",
+   "name": "Rib 3 (true rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_05",
+   "segment": "torso",
+   "verts": 375
+  },
+  {
+   "id": 63,
+   "key": "TrueRib4.l",
+   "name": "Rib 4 (true rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 256
+  },
+  {
+   "id": 64,
+   "key": "TrueRib4.r",
+   "name": "Rib 4 (true rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 256
+  },
+  {
+   "id": 65,
+   "key": "TrueRib5.l",
+   "name": "Rib 5 (true rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 324
+  },
+  {
+   "id": 66,
+   "key": "TrueRib5.r",
+   "name": "Rib 5 (true rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 324
+  },
+  {
+   "id": 67,
+   "key": "TrueRib6.l",
+   "name": "Rib 6 (true rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 248
+  },
+  {
+   "id": 68,
+   "key": "TrueRib6.r",
+   "name": "Rib 6 (true rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 248
+  },
+  {
+   "id": 69,
+   "key": "TrueRib7.l",
+   "name": "Rib 7 (true rib)",
+   "side": "Left",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 440
+  },
+  {
+   "id": 70,
+   "key": "TrueRib7.r",
+   "name": "Rib 7 (true rib)",
+   "side": "Right",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 440
+  },
+  {
+   "id": 71,
+   "key": "CoastalCartilage",
+   "name": "Costal cartilage",
+   "side": "Centre",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 1508
+  },
+  {
+   "id": 72,
+   "key": "Sternum",
+   "name": "Sternum (breastbone)",
+   "side": "Centre",
+   "region": "Rib cage",
+   "bone": "spine_04",
+   "segment": "torso",
+   "verts": 1231
+  },
+  {
+   "id": 73,
+   "key": "Clavicle.r",
+   "name": "Clavicle (collarbone)",
+   "side": "Right",
+   "region": "Shoulder girdle",
+   "bone": "clavicle_r",
+   "segment": "torso",
+   "verts": 861
+  },
+  {
+   "id": 74,
+   "key": "Femur.r",
+   "name": "Femur",
+   "side": "Right",
+   "region": "Thigh",
+   "bone": "thigh_r",
+   "segment": "thigh_r",
+   "verts": 2172
+  },
+  {
+   "id": 75,
+   "key": "Fibula.r",
+   "name": "Fibula",
+   "side": "Right",
+   "region": "Lower leg",
+   "bone": "calf_r",
+   "segment": "calf_r",
+   "verts": 1440
+  },
+  {
+   "id": 76,
+   "key": "Humerus.r",
+   "name": "Humerus",
+   "side": "Right",
+   "region": "Upper arm",
+   "bone": "upperarm_r",
+   "segment": "upperarm_r",
+   "verts": 760
+  },
+  {
+   "id": 77,
+   "key": "Radius.r",
+   "name": "Radius",
+   "side": "Right",
+   "region": "Forearm",
+   "bone": "lowerarm_r",
+   "segment": "lowerarm_r",
+   "verts": 1269
+  },
+  {
+   "id": 78,
+   "key": "Ulna.r",
+   "name": "Ulna",
+   "side": "Right",
+   "region": "Forearm",
+   "bone": "lowerarm_r",
+   "segment": "lowerarm_r",
+   "verts": 862
+  },
+  {
+   "id": 79,
+   "key": "Patella.l",
+   "name": "Patella (kneecap)",
+   "side": "Left",
+   "region": "Knee",
+   "bone": "calf_l",
+   "segment": "calf_l",
+   "verts": 526
+  },
+  {
+   "id": 80,
+   "key": "Tibia.r",
+   "name": "Tibia",
+   "side": "Right",
+   "region": "Lower leg",
+   "bone": "calf_r",
+   "segment": "calf_r",
+   "verts": 732
+  },
+  {
+   "id": 81,
+   "key": "Scapula.r",
+   "name": "Scapula (shoulder blade)",
+   "side": "Right",
+   "region": "Shoulder girdle",
+   "bone": "clavicle_r",
+   "segment": "torso",
+   "verts": 1306
+  },
+  {
+   "id": 82,
+   "key": "Scapula.l",
+   "name": "Scapula (shoulder blade)",
+   "side": "Left",
+   "region": "Shoulder girdle",
+   "bone": "clavicle_l",
+   "segment": "torso",
+   "verts": 1306
+  },
+  {
+   "id": 83,
+   "key": "Clavicle.l",
+   "name": "Clavicle (collarbone)",
+   "side": "Left",
+   "region": "Shoulder girdle",
+   "bone": "clavicle_l",
+   "segment": "torso",
+   "verts": 861
+  },
+  {
+   "id": 84,
+   "key": "Humerus.l",
+   "name": "Humerus",
+   "side": "Left",
+   "region": "Upper arm",
+   "bone": "upperarm_l",
+   "segment": "upperarm_l",
+   "verts": 760
+  },
+  {
+   "id": 85,
+   "key": "Radius.l",
+   "name": "Radius",
+   "side": "Left",
+   "region": "Forearm",
+   "bone": "lowerarm_l",
+   "segment": "lowerarm_l",
+   "verts": 1269
+  },
+  {
+   "id": 86,
+   "key": "Ulna.l",
+   "name": "Ulna",
+   "side": "Left",
+   "region": "Forearm",
+   "bone": "lowerarm_l",
+   "segment": "lowerarm_l",
+   "verts": 862
+  },
+  {
+   "id": 87,
+   "key": "Femur.l",
+   "name": "Femur",
+   "side": "Left",
+   "region": "Thigh",
+   "bone": "thigh_l",
+   "segment": "thigh_l",
+   "verts": 2172
+  },
+  {
+   "id": 88,
+   "key": "Patella.r",
+   "name": "Patella (kneecap)",
+   "side": "Right",
+   "region": "Knee",
+   "bone": "calf_r",
+   "segment": "calf_r",
+   "verts": 526
+  },
+  {
+   "id": 89,
+   "key": "Fibula.l",
+   "name": "Fibula",
+   "side": "Left",
+   "region": "Lower leg",
+   "bone": "calf_l",
+   "segment": "calf_l",
+   "verts": 1440
+  },
+  {
+   "id": 90,
+   "key": "Tibia.l",
+   "name": "Tibia",
+   "side": "Left",
+   "region": "Lower leg",
+   "bone": "calf_l",
+   "segment": "calf_l",
+   "verts": 732
+  },
+  {
+   "id": 91,
+   "key": "Capitate.r",
+   "name": "Capitate",
+   "side": "Right",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_r",
+   "segment": "hand_r",
+   "verts": 56
+  },
+  {
+   "id": 92,
+   "key": "Hamate.r",
+   "name": "Hamate",
+   "side": "Right",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_r",
+   "segment": "hand_r",
+   "verts": 86
+  },
+  {
+   "id": 93,
+   "key": "Lunate.r",
+   "name": "Lunate",
+   "side": "Right",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_r",
+   "segment": "hand_r",
+   "verts": 34
+  },
+  {
+   "id": 94,
+   "key": "Pisiform.r",
+   "name": "Pisiform",
+   "side": "Right",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_r",
+   "segment": "hand_r",
+   "verts": 26
+  },
+  {
+   "id": 95,
+   "key": "Scaphoid.r",
+   "name": "Scaphoid",
+   "side": "Right",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_r",
+   "segment": "hand_r",
+   "verts": 78
+  },
+  {
+   "id": 96,
+   "key": "Trapezium.r",
+   "name": "Trapezium",
+   "side": "Right",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_r",
+   "segment": "hand_r",
+   "verts": 88
+  },
+  {
+   "id": 97,
+   "key": "Trapezoid.r",
+   "name": "Trapezoid",
+   "side": "Right",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_r",
+   "segment": "hand_r",
+   "verts": 34
+  },
+  {
+   "id": 98,
+   "key": "Triquetrum.r",
+   "name": "Triquetrum",
+   "side": "Right",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_r",
+   "segment": "hand_r",
+   "verts": 56
+  },
+  {
+   "id": 99,
+   "key": "Capitate.l",
+   "name": "Capitate",
+   "side": "Left",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_l",
+   "segment": "hand_l",
+   "verts": 56
+  },
+  {
+   "id": 100,
+   "key": "Hamate.l",
+   "name": "Hamate",
+   "side": "Left",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_l",
+   "segment": "hand_l",
+   "verts": 86
+  },
+  {
+   "id": 101,
+   "key": "Lunate.l",
+   "name": "Lunate",
+   "side": "Left",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_l",
+   "segment": "hand_l",
+   "verts": 34
+  },
+  {
+   "id": 102,
+   "key": "Pisiform.l",
+   "name": "Pisiform",
+   "side": "Left",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_l",
+   "segment": "hand_l",
+   "verts": 26
+  },
+  {
+   "id": 103,
+   "key": "Scaphoid.l",
+   "name": "Scaphoid",
+   "side": "Left",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_l",
+   "segment": "hand_l",
+   "verts": 78
+  },
+  {
+   "id": 104,
+   "key": "Trapezium.l",
+   "name": "Trapezium",
+   "side": "Left",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_l",
+   "segment": "hand_l",
+   "verts": 88
+  },
+  {
+   "id": 105,
+   "key": "Trapezoid.l",
+   "name": "Trapezoid",
+   "side": "Left",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_l",
+   "segment": "hand_l",
+   "verts": 34
+  },
+  {
+   "id": 106,
+   "key": "Triquetrum.l",
+   "name": "Triquetrum",
+   "side": "Left",
+   "region": "Wrist (carpal bones)",
+   "bone": "hand_l",
+   "segment": "hand_l",
+   "verts": 56
+  },
+  {
+   "id": 107,
+   "key": "FifthMetacarpal.r",
+   "name": "Fifth metacarpal",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "pinky_metacarpal_r",
+   "segment": "hand_r",
+   "verts": 98
+  },
+  {
+   "id": 108,
+   "key": "FirstMetacarpal.r",
+   "name": "First metacarpal",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "thumb_01_r",
+   "segment": "hand_r",
+   "verts": 98
+  },
+  {
+   "id": 109,
+   "key": "FourthMetacarpal.r",
+   "name": "Fourth metacarpal",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "ring_metacarpal_r",
+   "segment": "hand_r",
+   "verts": 98
+  },
+  {
+   "id": 110,
+   "key": "SecondMetacarpal.r",
+   "name": "Second metacarpal",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "index_metacarpal_r",
+   "segment": "hand_r",
+   "verts": 74
+  },
+  {
+   "id": 111,
+   "key": "ThirdMetacarpal.r",
+   "name": "Third metacarpal",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "middle_metacarpal_r",
+   "segment": "hand_r",
+   "verts": 90
+  },
+  {
+   "id": 112,
+   "key": "FifthMetacarpal.l",
+   "name": "Fifth metacarpal",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "pinky_metacarpal_l",
+   "segment": "hand_l",
+   "verts": 98
+  },
+  {
+   "id": 113,
+   "key": "FirstMetacarpal.l",
+   "name": "First metacarpal",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "thumb_01_l",
+   "segment": "hand_l",
+   "verts": 98
+  },
+  {
+   "id": 114,
+   "key": "FourthMetacarpal.l",
+   "name": "Fourth metacarpal",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "ring_metacarpal_l",
+   "segment": "hand_l",
+   "verts": 98
+  },
+  {
+   "id": 115,
+   "key": "SecondMetacarpal.l",
+   "name": "Second metacarpal",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "index_metacarpal_l",
+   "segment": "hand_l",
+   "verts": 74
+  },
+  {
+   "id": 116,
+   "key": "ThirdMetacarpal.l",
+   "name": "Third metacarpal",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "middle_metacarpal_l",
+   "segment": "hand_l",
+   "verts": 90
+  },
+  {
+   "id": 117,
+   "key": "ProximalPhalanxOfTheThumb.r",
+   "name": "Proximal phalanx of the thumb",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "thumb_02_r",
+   "segment": "hand_r",
+   "verts": 98
+  },
+  {
+   "id": 118,
+   "key": "ProximalPhalanxOfTheIndexFinger.r",
+   "name": "Proximal phalanx of the index finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "index_01_r",
+   "segment": "hand_r",
+   "verts": 82
+  },
+  {
+   "id": 119,
+   "key": "ProximalPhalanxOfTheMiddleFinger.r",
+   "name": "Proximal phalanx of the middle finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "middle_01_r",
+   "segment": "hand_r",
+   "verts": 82
+  },
+  {
+   "id": 120,
+   "key": "ProximalPhalanxOfTheRingFinger.r",
+   "name": "Proximal phalanx of the ring finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "ring_01_r",
+   "segment": "hand_r",
+   "verts": 82
+  },
+  {
+   "id": 121,
+   "key": "ProximalPhalanxOfTheLittleFinger.r",
+   "name": "Proximal phalanx of the little finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "pinky_01_r",
+   "segment": "hand_r",
+   "verts": 82
+  },
+  {
+   "id": 122,
+   "key": "ProximalPhalanxOfTheThumb.l",
+   "name": "Proximal phalanx of the thumb",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "thumb_02_l",
+   "segment": "hand_l",
+   "verts": 98
+  },
+  {
+   "id": 123,
+   "key": "ProximalPhalanxOfTheIndexFinger.l",
+   "name": "Proximal phalanx of the index finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "index_01_l",
+   "segment": "hand_l",
+   "verts": 82
+  },
+  {
+   "id": 124,
+   "key": "ProximalPhalanxOfTheMiddleFinger.l",
+   "name": "Proximal phalanx of the middle finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "middle_01_l",
+   "segment": "hand_l",
+   "verts": 82
+  },
+  {
+   "id": 125,
+   "key": "ProximalPhalanxOfTheRingFinger.l",
+   "name": "Proximal phalanx of the ring finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "ring_01_l",
+   "segment": "hand_l",
+   "verts": 82
+  },
+  {
+   "id": 126,
+   "key": "ProximalPhalanxOfTheLittleFinger.l",
+   "name": "Proximal phalanx of the little finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "pinky_01_l",
+   "segment": "hand_l",
+   "verts": 82
+  },
+  {
+   "id": 127,
+   "key": "MiddlePhalanxOfTheIndexFinger.r",
+   "name": "Middle phalanx of the index finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "index_02_r",
+   "segment": "hand_r",
+   "verts": 66
+  },
+  {
+   "id": 128,
+   "key": "MiddlePhalanxOfTheMiddleFinger.r",
+   "name": "Middle phalanx of the middle finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "middle_02_r",
+   "segment": "hand_r",
+   "verts": 66
+  },
+  {
+   "id": 129,
+   "key": "MiddlePhalanxOfTheRingFinger.r",
+   "name": "Middle phalanx of the ring finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "ring_02_r",
+   "segment": "hand_r",
+   "verts": 66
+  },
+  {
+   "id": 130,
+   "key": "MiddlePhalanxOfTheLittleFinger.r",
+   "name": "Middle phalanx of the little finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "pinky_02_r",
+   "segment": "hand_r",
+   "verts": 66
+  },
+  {
+   "id": 131,
+   "key": "MiddlePhalanxOfTheIndexFinger.l",
+   "name": "Middle phalanx of the index finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "index_02_l",
+   "segment": "hand_l",
+   "verts": 66
+  },
+  {
+   "id": 132,
+   "key": "MiddlePhalanxOfTheMiddleFinger.l",
+   "name": "Middle phalanx of the middle finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "middle_02_l",
+   "segment": "hand_l",
+   "verts": 66
+  },
+  {
+   "id": 133,
+   "key": "MiddlePhalanxOfTheRingFinger.l",
+   "name": "Middle phalanx of the ring finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "ring_02_l",
+   "segment": "hand_l",
+   "verts": 66
+  },
+  {
+   "id": 134,
+   "key": "MiddlePhalanxOfTheLittleFinger.l",
+   "name": "Middle phalanx of the little finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "pinky_02_l",
+   "segment": "hand_l",
+   "verts": 66
+  },
+  {
+   "id": 135,
+   "key": "DistalPhalanxOfTheThumb.r",
+   "name": "Distal phalanx of the thumb",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "thumb_03_r",
+   "segment": "hand_r",
+   "verts": 72
+  },
+  {
+   "id": 136,
+   "key": "DistalPhalanxOfTheIndexFinger.r",
+   "name": "Distal phalanx of the index finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "index_03_r",
+   "segment": "hand_r",
+   "verts": 72
+  },
+  {
+   "id": 137,
+   "key": "DistalPhalanxOfTheMiddleFinger.r",
+   "name": "Distal phalanx of the middle finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "middle_03_r",
+   "segment": "hand_r",
+   "verts": 72
+  },
+  {
+   "id": 138,
+   "key": "DistalPhalanxOfTheRingFinger.r",
+   "name": "Distal phalanx of the ring finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "ring_03_r",
+   "segment": "hand_r",
+   "verts": 72
+  },
+  {
+   "id": 139,
+   "key": "DistalPhalanxOfTheLittleFinger.r",
+   "name": "Distal phalanx of the little finger",
+   "side": "Right",
+   "region": "Hand",
+   "bone": "pinky_03_r",
+   "segment": "hand_r",
+   "verts": 72
+  },
+  {
+   "id": 140,
+   "key": "DistalPhalanxOfTheThumb.l",
+   "name": "Distal phalanx of the thumb",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "thumb_03_l",
+   "segment": "hand_l",
+   "verts": 72
+  },
+  {
+   "id": 141,
+   "key": "DistalPhalanxOfTheIndexFinger.l",
+   "name": "Distal phalanx of the index finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "index_03_l",
+   "segment": "hand_l",
+   "verts": 72
+  },
+  {
+   "id": 142,
+   "key": "DistalPhalanxOfTheMiddleFinger.l",
+   "name": "Distal phalanx of the middle finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "middle_03_l",
+   "segment": "hand_l",
+   "verts": 72
+  },
+  {
+   "id": 143,
+   "key": "DistalPhalanxOfTheRingFinger.l",
+   "name": "Distal phalanx of the ring finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "ring_03_l",
+   "segment": "hand_l",
+   "verts": 72
+  },
+  {
+   "id": 144,
+   "key": "DistalPhalanxOfTheLittleFinger.l",
+   "name": "Distal phalanx of the little finger",
+   "side": "Left",
+   "region": "Hand",
+   "bone": "pinky_03_l",
+   "segment": "hand_l",
+   "verts": 72
+  },
+  {
+   "id": 145,
+   "key": "Talus.r",
+   "name": "Talus",
+   "side": "Right",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 600
+  },
+  {
+   "id": 146,
+   "key": "Calcaneus.r",
+   "name": "Calcaneus",
+   "side": "Right",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 482
+  },
+  {
+   "id": 147,
+   "key": "Cuboid.r",
+   "name": "Cuboid",
+   "side": "Right",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 564
+  },
+  {
+   "id": 148,
+   "key": "Navicular.r",
+   "name": "Navicular",
+   "side": "Right",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 527
+  },
+  {
+   "id": 149,
+   "key": "Navicular.l",
+   "name": "Navicular",
+   "side": "Left",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 527
+  },
+  {
+   "id": 150,
+   "key": "Talus.l",
+   "name": "Talus",
+   "side": "Left",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 600
+  },
+  {
+   "id": 151,
+   "key": "Calcaneus.l",
+   "name": "Calcaneus",
+   "side": "Left",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 482
+  },
+  {
+   "id": 152,
+   "key": "Cuboid.l",
+   "name": "Cuboid",
+   "side": "Left",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 564
+  },
+  {
+   "id": 153,
+   "key": "CuneiformLateral.r",
+   "name": "Lateral cuneiform",
+   "side": "Right",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 543
+  },
+  {
+   "id": 154,
+   "key": "CuneiformMedial.r",
+   "name": "Medial cuneiform",
+   "side": "Right",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 639
+  },
+  {
+   "id": 155,
+   "key": "CuneiformMiddle.r",
+   "name": "Intermediate cuneiform",
+   "side": "Right",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 536
+  },
+  {
+   "id": 156,
+   "key": "CuneiformLateral.l",
+   "name": "Lateral cuneiform",
+   "side": "Left",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 543
+  },
+  {
+   "id": 157,
+   "key": "CuneiformMedial.l",
+   "name": "Medial cuneiform",
+   "side": "Left",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 639
+  },
+  {
+   "id": 158,
+   "key": "CuneiformMiddle.l",
+   "name": "Intermediate cuneiform",
+   "side": "Left",
+   "region": "Foot (tarsal bones)",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 536
+  },
+  {
+   "id": 159,
+   "key": "MetatarsalFifth.r",
+   "name": "Fifth metatarsal",
+   "side": "Right",
+   "region": "Foot",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 575
+  },
+  {
+   "id": 160,
+   "key": "MetatarsalFirst.r",
+   "name": "First metatarsal",
+   "side": "Right",
+   "region": "Foot",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 1165
+  },
+  {
+   "id": 161,
+   "key": "MetatarsalFourth.r",
+   "name": "Fourth metatarsal",
+   "side": "Right",
+   "region": "Foot",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 559
+  },
+  {
+   "id": 162,
+   "key": "MetatarsalSecond.r",
+   "name": "Second metatarsal",
+   "side": "Right",
+   "region": "Foot",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 722
+  },
+  {
+   "id": 163,
+   "key": "MetatarsalThird.r",
+   "name": "Third metatarsal",
+   "side": "Right",
+   "region": "Foot",
+   "bone": "foot_r",
+   "segment": "foot_r",
+   "verts": 596
+  },
+  {
+   "id": 164,
+   "key": "MetatarsalFifth.l",
+   "name": "Fifth metatarsal",
+   "side": "Left",
+   "region": "Foot",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 575
+  },
+  {
+   "id": 165,
+   "key": "MetatarsalFirst.l",
+   "name": "First metatarsal",
+   "side": "Left",
+   "region": "Foot",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 1165
+  },
+  {
+   "id": 166,
+   "key": "MetatarsalFourth.l",
+   "name": "Fourth metatarsal",
+   "side": "Left",
+   "region": "Foot",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 559
+  },
+  {
+   "id": 167,
+   "key": "MetatarsalSecond.l",
+   "name": "Second metatarsal",
+   "side": "Left",
+   "region": "Foot",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 722
+  },
+  {
+   "id": 168,
+   "key": "MetatarsalThird.l",
+   "name": "Third metatarsal",
+   "side": "Left",
+   "region": "Foot",
+   "bone": "foot_l",
+   "segment": "foot_l",
+   "verts": 596
+  },
+  {
+   "id": 169,
+   "key": "SecondProximal.r",
+   "name": "Proximal phalanx of the second toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 624
+  },
+  {
+   "id": 170,
+   "key": "ThirdProximal.r",
+   "name": "Proximal phalanx of the third toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 638
+  },
+  {
+   "id": 171,
+   "key": "FourthProximal.r",
+   "name": "Proximal phalanx of the fourth toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 636
+  },
+  {
+   "id": 172,
+   "key": "FifthProximal.r",
+   "name": "Proximal phalanx of the little toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 686
+  },
+  {
+   "id": 173,
+   "key": "FirstProximal.r",
+   "name": "Proximal phalanx of the big toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 657
+  },
+  {
+   "id": 174,
+   "key": "SecondProximal.l",
+   "name": "Proximal phalanx of the second toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 624
+  },
+  {
+   "id": 175,
+   "key": "ThirdProximal.l",
+   "name": "Proximal phalanx of the third toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 638
+  },
+  {
+   "id": 176,
+   "key": "FourthProximal.l",
+   "name": "Proximal phalanx of the fourth toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 636
+  },
+  {
+   "id": 177,
+   "key": "FifthProximal.l",
+   "name": "Proximal phalanx of the little toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 686
+  },
+  {
+   "id": 178,
+   "key": "FirstProximal.l",
+   "name": "Proximal phalanx of the big toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 657
+  },
+  {
+   "id": 179,
+   "key": "InnerSesamoid.Toe.l",
+   "name": "Medial sesamoid of the big toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 191
+  },
+  {
+   "id": 180,
+   "key": "InnerSesamoid.Toe.r",
+   "name": "Medial sesamoid of the big toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 191
+  },
+  {
+   "id": 181,
+   "key": "OuterSesamoid.Toe.l",
+   "name": "Lateral sesamoid of the big toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 191
+  },
+  {
+   "id": 182,
+   "key": "OuterSesamoid.Toe.r",
+   "name": "Lateral sesamoid of the big toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 191
+  },
+  {
+   "id": 183,
+   "key": "AMiddle.r",
+   "name": "Middle phalanx of the second toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 1382
+  },
+  {
+   "id": 184,
+   "key": "BMiddle.r",
+   "name": "Middle phalanx of the third toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 372
+  },
+  {
+   "id": 185,
+   "key": "CMiddle.r",
+   "name": "Middle phalanx of the fourth toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 356
+  },
+  {
+   "id": 186,
+   "key": "DMiddle.r",
+   "name": "Middle phalanx of the little toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 373
+  },
+  {
+   "id": 187,
+   "key": "AMiddle.l",
+   "name": "Middle phalanx of the second toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 1382
+  },
+  {
+   "id": 188,
+   "key": "BMiddle.l",
+   "name": "Middle phalanx of the third toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 372
+  },
+  {
+   "id": 189,
+   "key": "CMiddle.l",
+   "name": "Middle phalanx of the fourth toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 356
+  },
+  {
+   "id": 190,
+   "key": "DMiddle.l",
+   "name": "Middle phalanx of the little toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 373
+  },
+  {
+   "id": 191,
+   "key": "FirstDistal.r",
+   "name": "Distal phalanx of the big toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 457
+  },
+  {
+   "id": 192,
+   "key": "SecondDistal.r",
+   "name": "Distal phalanx of the second toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 380
+  },
+  {
+   "id": 193,
+   "key": "ThirdDistal.r",
+   "name": "Distal phalanx of the third toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 454
+  },
+  {
+   "id": 194,
+   "key": "FourthDistal.r",
+   "name": "Distal phalanx of the fourth toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 327
+  },
+  {
+   "id": 195,
+   "key": "FifthDistal.r",
+   "name": "Distal phalanx of the little toe",
+   "side": "Right",
+   "region": "Foot (toes)",
+   "bone": "ball_r",
+   "segment": "foot_r",
+   "verts": 394
+  },
+  {
+   "id": 196,
+   "key": "FirstDistal.l",
+   "name": "Distal phalanx of the big toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 457
+  },
+  {
+   "id": 197,
+   "key": "SecondDistal.l",
+   "name": "Distal phalanx of the second toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 380
+  },
+  {
+   "id": 198,
+   "key": "ThirdDistal.l",
+   "name": "Distal phalanx of the third toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 454
+  },
+  {
+   "id": 199,
+   "key": "FourthDistal.l",
+   "name": "Distal phalanx of the fourth toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 327
+  },
+  {
+   "id": 200,
+   "key": "FifthDistal.l",
+   "name": "Distal phalanx of the little toe",
+   "side": "Left",
+   "region": "Foot (toes)",
+   "bone": "ball_l",
+   "segment": "foot_l",
+   "verts": 394
+  }
+ ]
+}

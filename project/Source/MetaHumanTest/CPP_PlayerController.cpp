@@ -139,8 +139,14 @@ void ACPP_PlayerController::PlayerTick(float DeltaTime)
 
 void ACPP_PlayerController::UpdateMusclePicking()
 {
-	UAnatomyPickerComp* Picker = GetPawn() ? GetPawn()->FindComponentByClass<UAnatomyPickerComp>() : nullptr;
-	if (!Picker)
+	// One picker per pickable layer (muscles, bones...). Each one only picks while its own layer is the one
+	// you're looking at (UAnatomyPickerComp::IsPickingActive), so at most one of them reacts at a time.
+	TArray<UAnatomyPickerComp*> Pickers;
+	if (APawn* CurrentPawn = GetPawn())
+	{
+		CurrentPawn->GetComponents<UAnatomyPickerComp>(Pickers);
+	}
+	if (Pickers.Num() == 0)
 	{
 		return;
 	}
@@ -149,7 +155,10 @@ void ACPP_PlayerController::UpdateMusclePicking()
 	FVector RayOrigin, RayDirection;
 	if (!IsInputKeyDown(EKeys::RightMouseButton) && DeprojectMousePositionToWorld(RayOrigin, RayDirection))
 	{
-		Picker->UpdateHover(RayOrigin, RayDirection);
+		for (UAnatomyPickerComp* Picker : Pickers)
+		{
+			Picker->UpdateHover(RayOrigin, RayDirection); // an inactive picker clears its own hover
+		}
 	}
 
 	// Click (press + release without dragging, since a left drag pans the camera) selects.
@@ -162,7 +171,13 @@ void ACPP_PlayerController::UpdateMusclePicking()
 		}
 		else if (WasInputKeyJustReleased(EKeys::LeftMouseButton) && FVector2D::Distance(Mouse, LeftPressPosition) <= ClickMaxDragPixels)
 		{
-			Picker->SelectHovered();
+			for (UAnatomyPickerComp* Picker : Pickers)
+			{
+				if (Picker->IsPickingActive())
+				{
+					Picker->SelectHovered();
+				}
+			}
 		}
 	}
 }

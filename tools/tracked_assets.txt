@@ -16,3 +16,8 @@ Content/Abby_Animation/Posture/Abby_Running__2__Upright.uasset
 Content/MadisonTesting/BeauMHCharacter/BP_Beau_Pawn.uasset
 Content/MadisonTesting/BeauMHCharacter/Animation/ABP_Beau_Timeline.uasset
 Content/UserInterface/IHPC/Widgets/WBP_IHPC_LayerSwitcher.uasset
+Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/SK_Anatomy_MetaHumanBody.uasset
+Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/SKM_Anatomy_Muscles_Segmented.uasset
+Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/SKM_Anatomy_Skeleton_Segmented.uasset
+Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/DA_Atlas_Muscles_Segmented.uasset
+Plugins/MetaHumanAnatomyLayers/Content/Anatomy/Segmented/DA_Atlas_Skeleton_Segmented.uasset

@@ -11,7 +11,7 @@ rsync -a --delete --exclude 'Windows/' "$PROJ/Config/" "$DST/Config/"
 # Android File Server token: never publish it
 sed -i '' -E 's/^(SecurityToken=).*/\1REDACTED/' "$DST/Config/DefaultEngine.ini"
 # The plugin: everything except build products (its content is small enough to keep)
-rsync -a --delete --exclude Binaries --exclude Intermediate --exclude '__pycache__' \
+rsync -a --delete --exclude Binaries --exclude Intermediate --exclude '__pycache__' --exclude 'Content/Anatomy/Segmented/Source/' \
   "$PROJ/Plugins/MetaHumanAnatomyLayers/" "$DST/Plugins/MetaHumanAnatomyLayers/"
 # Tracked game content
 grep -v '^#' "$REPO/tools/tracked_assets.txt" | grep . | while read -r f; do

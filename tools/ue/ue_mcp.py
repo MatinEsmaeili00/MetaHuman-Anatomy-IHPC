@@ -56,6 +56,8 @@ def tool(name, args):
             text = c.get("text", json.dumps(c)[:2000])
             try:  # toolset captures come back as {"returnValue": {"mimeType": "image/png", "data": "<base64>"}}
                 rv = json.loads(text).get("returnValue")
+                if isinstance(rv, dict) and isinstance(rv.get("image"), dict):
+                    rv = rv["image"]
                 if isinstance(rv, dict) and str(rv.get("mimeType", "")).startswith("image/") and rv.get("data"):
                     import base64, os
                     path = os.environ.get("UE_MCP_IMAGE", "/tmp/ue_mcp_capture.png")
